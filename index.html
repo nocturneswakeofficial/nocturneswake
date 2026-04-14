@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
 
-        /* FONDO: Visible y nítido */
+        /* FONDO: Claridad original */
         .hero-bg {
             position: fixed;
             top: 0;
@@ -17,11 +17,11 @@
             height: 100%;
             background: url('banda.jpg') no-repeat center center;
             background-size: cover;
-            filter: brightness(70%); /* Nivel justo para que se vean los rostros */
+            /* Eliminamos filtros agresivos para mantener la imagen clara */
             z-index: 1;
         }
 
-        /* NAVEGACIÓN: Botones reales y legibles a la derecha */
+        /* NAVEGACIÓN: Botones a la derecha */
         .nav-container {
             position: fixed;
             right: 20px;
@@ -34,7 +34,7 @@
         }
 
         .nav-button {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             color: #fff;
             text-decoration: none;
             padding: 15px 20px;
@@ -44,7 +44,7 @@
             text-transform: uppercase;
             border: 1px solid #fff;
             text-align: center;
-            min-width: 140px;
+            min-width: 160px;
             transition: 0.3s;
         }
 
@@ -66,33 +66,41 @@
             padding: 20px;
         }
 
-        /* PORTADA: Sin marcos extraños */
         .main-logo {
             width: 320px;
             max-width: 85%;
             margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0 40px rgba(0,0,0,0.7);
         }
 
         h1 {
             font-size: 3rem;
             letter-spacing: 5px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px #000;
         }
 
         .bio-text {
-            max-width: 650px;
-            background: rgba(0,0,0,0.8);
-            padding: 30px;
-            line-height: 1.6;
+            max-width: 700px;
+            background: rgba(0,0,0,0.85);
+            padding: 35px;
+            line-height: 1.7;
             font-size: 1.1rem;
-            border-top: 2px solid #fff;
+            border-top: 2px solid #D4AF37; /* Borde dorado */
+        }
+
+        /* Color dorado para la frase del pincel */
+        .highlight-gold {
+            color: #D4AF37;
+            font-style: italic;
+            display: block;
+            margin-top: 15px;
         }
 
         @media (max-width: 768px) {
             .nav-container { position: relative; right: 0; top: 0; transform: none; margin-top: 20px; }
             h1 { font-size: 2rem; }
-            .main-content { height: auto; }
+            .main-content { height: auto; padding-top: 40px; }
         }
     </style>
 </head>
@@ -106,15 +114,17 @@
         <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button" target="_blank">TIKTOK</a>
         <a href="https://www.youtube.com/@nocturneswake" class="nav-button" target="_blank">YOUTUBE</a>
         <a href="https://x.com/nocturneswake" class="nav-button" target="_blank">X / TWITTER</a>
+        <a href="Que es Nocturne's Wake.docx" class="nav-button" target="_blank">HISTORIA / INFO</a>
     </nav>
 
     <main class="main-content">
-        <img src="Nocturnes Wake-Portada.png" class="main-logo" alt="Nocturne's Wake - We Don't Break">
+        <img src="Nocturnes Wake-Portada.jpg" class="main-logo" alt="Nocturne's Wake - We Don't Break">
         
         <h1>NOCTURNE'S WAKE</h1>
         
         <div class="bio-text">
-            <p>La primera banda virtual uruguaya de rock en inglés[cite: 6, 10, 82]. Una <b>simbiosis humano-digital</b> donde la emoción es amplificada por la máquina[cite: 18, 25, 48]. <b>WE DON'T BREAK</b>[cite: 32, 62].</p>
+            <p>Nocturne’s Wake es un proyecto de simbiosis humano-digital. No es una banda generada por inteligencia artificial: es una obra dirigida por un autor, donde la tecnología funciona como instrumento y no como origen.
+            <span class="highlight-gold">"Un pincel en las manos correctas es una herramienta de artista; en las manos equivocadas, es solo un pincel."</span></p>
         </div>
     </main>
 
