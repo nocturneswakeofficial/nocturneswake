@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>NOCTURNE'S WAKE | Official</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="/nocturneswake/favicon.png" type="image/png">
+
+    <!-- SEO -->
+    <meta name="description" content="Nocturne's Wake es un proyecto musical de simbiosis humano-digital. We Don't Break.">
+    <meta name="keywords" content="Nocturne's Wake, banda virtual, rock, AI music, art rock">
+    <meta name="author" content="Nocturne's Wake">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
+
+        body, html {
+            height: 100%;
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
         /* FONDO */
         .hero-bg {
@@ -18,7 +35,31 @@
             z-index: 1;
         }
 
-        /* NAVEGACIÓN LATERAL */
+        /* SELECTOR IDIOMA */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+        }
+
+        .lang-switch button {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            padding: 6px 12px;
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .lang-switch button:hover {
+            background: #D4AF37;
+            color: #000;
+        }
+
+        /* NAV */
         .nav-container {
             position: fixed;
             right: 30px;
@@ -43,13 +84,11 @@
             text-align: center;
             min-width: 180px;
             transition: 0.3s ease;
-            cursor: pointer;
         }
 
         .nav-button:hover {
             background: #fff;
             color: #000;
-            border-color: #fff;
         }
 
         .btn-info {
@@ -62,7 +101,7 @@
             color: #000;
         }
 
-        /* BLOQUE CENTRAL */
+        /* CONTENIDO */
         .main-content {
             position: relative;
             z-index: 5;
@@ -76,17 +115,16 @@
         }
 
         .main-logo {
-            width: 300px;
+            width: 220px;
             max-width: 80%;
             margin-bottom: 25px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            opacity: 0.9;
         }
 
         h1 {
             font-size: 3rem;
             letter-spacing: 8px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 12px rgba(0,0,0,1);
         }
 
         .bio-box {
@@ -96,19 +134,25 @@
             border-top: 2px solid #D4AF37;
             line-height: 1.85;
             font-size: 1.08rem;
-            text-align: center;
         }
 
-        .brush-quote {
-            display: block;
-            margin-top: 18px;
+        .cta {
+            margin-top: 20px;
+            display: inline-block;
+            border: 1px solid #D4AF37;
+            padding: 12px 28px;
             color: #D4AF37;
-            font-weight: bold;
-            font-style: italic;
-            font-size: 1rem;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-size: 12px;
         }
 
-        /* OVERLAY DE HISTORIA */
+        .cta:hover {
+            background: #D4AF37;
+            color: #000;
+        }
+
+        /* OVERLAY */
         .info-overlay {
             display: none;
             position: fixed;
@@ -124,232 +168,95 @@
             display: block;
         }
 
-        .info-content {
-            max-width: 820px;
-            margin: 0 auto;
-            line-height: 1.9;
-        }
-
-        .info-content h2 {
-            font-size: 2rem;
-            letter-spacing: 5px;
-            color: #D4AF37;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .info-content h3 {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            color: #D4AF37;
-            margin: 35px 0 12px;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(212,175,55,0.3);
-            padding-bottom: 8px;
-        }
-
-        .info-content p {
-            font-size: 1.02rem;
-            color: #ddd;
-            margin-bottom: 16px;
-        }
-
-        .info-content .manifiesto {
-            border-left: 3px solid #D4AF37;
-            padding-left: 20px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #ccc;
-        }
-
-        .info-content .quote-gold {
-            color: #D4AF37;
-            font-style: italic;
-            font-weight: bold;
-            display: block;
-            margin: 20px 0;
-            font-size: 1.05rem;
-        }
-
-        .info-content .we-dont-break {
-            font-size: 1.6rem;
-            letter-spacing: 6px;
-            color: #D4AF37;
-            font-weight: bold;
-            text-align: center;
-            margin: 40px 0 20px;
-        }
-
-        .platforms {
-            margin-top: 40px;
-            border-top: 1px solid rgba(212,175,55,0.3);
-            padding-top: 30px;
-        }
-
-        .platforms a {
-            display: block;
-            color: #D4AF37;
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: 0.2s;
-        }
-
-        .platforms a:hover {
-            color: #fff;
-        }
-
-        .platforms span {
-            color: #888;
-            margin-right: 8px;
-        }
-
         .close-btn {
             display: block;
-            margin: 50px auto 20px;
+            margin: 40px auto;
             background: transparent;
             border: 1px solid #D4AF37;
             color: #D4AF37;
-            padding: 14px 40px;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            padding: 12px 30px;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .close-btn:hover {
-            background: #D4AF37;
-            color: #000;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-container {
-                position: relative;
-                right: 0; top: 0;
-                transform: none;
-                margin-top: 30px;
-                width: 100%;
-                align-items: center;
-            }
-            h1 { font-size: 2rem; }
-            .main-content { height: auto; padding-top: 50px; }
-            .bio-box { padding: 25px; font-size: 1rem; }
-            .info-content h2 { font-size: 1.5rem; }
-            .info-overlay { padding: 40px 16px; }
-        }
     </style>
 </head>
+
 <body>
 
-    <div class="hero-bg"></div>
+<div class="hero-bg"></div>
 
-    <!-- NAV LATERAL -->
-    <nav class="nav-container">
-        <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" class="nav-button" target="_blank">SPOTIFY</a>
-        <a href="https://www.instagram.com/nocturneswake" class="nav-button" target="_blank">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button" target="_blank">TIKTOK</a>
-        <a href="https://www.youtube.com/@nocturneswake" class="nav-button" target="_blank">YOUTUBE</a>
-        <a href="https://x.com/NocturnesWake" class="nav-button" target="_blank">X / TWITTER</a>
-        <button onclick="openInfo()" class="nav-button btn-info">HISTORIA / INFO</button>
-    </nav>
+<!-- IDIOMA -->
+<div class="lang-switch">
+    <button onclick="setLang('es')">ES</button>
+    <button onclick="setLang('en')">EN</button>
+</div>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-        <img src="Nocturnes Wake-Portada.png" class="main-logo" alt="Nocturne's Wake — We Don't Break">
-        <h1>NOCTURNE'S WAKE</h1>
-        <div class="bio-box">
-            <p>Nocturne's Wake es un proyecto de simbiosis humano-digital.<br>
-            No es una banda generada por inteligencia artificial: es una obra dirigida por un autor,<br>
-            donde la tecnología funciona como instrumento y no como origen.</p>
-            <span class="brush-quote">"Un pincel en las manos correctas es una herramienta de artista;<br>en las manos equivocadas, es solo un pincel."</span>
-        </div>
-    </main>
+<!-- NAV -->
+<nav class="nav-container">
+    <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" class="nav-button" target="_blank">SPOTIFY</a>
+    <a href="https://www.instagram.com/nocturneswake" class="nav-button" target="_blank">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button" target="_blank">TIKTOK</a>
+    <a href="https://www.youtube.com/@nocturneswake" class="nav-button" target="_blank">YOUTUBE</a>
+    <a href="https://x.com/NocturnesWake" class="nav-button" target="_blank">X / TWITTER</a>
+    <button onclick="openInfo()" class="nav-button btn-info">HISTORIA / INFO</button>
+</nav>
 
-    <!-- OVERLAY: HISTORIA / INFO -->
-    <div class="info-overlay" id="infoOverlay">
-        <div class="info-content">
+<!-- MAIN -->
+<main class="main-content">
 
-            <h2>¿Qué es Nocturne's Wake?</h2>
+    <img src="nocturneswake-portada.png" class="main-logo">
 
-            <p>Nocturne's Wake es un proyecto musical y artístico nacido en Uruguay, creado y dirigido por un autor uruguayo con una visión global. Más que una banda, es un universo conceptual donde la música, la estética y la narrativa conviven como partes de una misma experiencia.</p>
+    <h1>NOCTURNE'S WAKE</h1>
 
-            <p>En su esencia, Nocturne's Wake no busca encajar en los formatos tradicionales. Nace como una propuesta que explora nuevas formas de crear, sentir y transmitir arte en un contexto donde lo humano y lo tecnológico ya no son opuestos, sino complementarios.</p>
+    <div class="bio-box" id="bioText">
+        <p>Esto no es solo música.<br>Es una señal humano-digital.</p>
 
-            <h3>El Concepto</h3>
+        <p>Nocturne's Wake es un proyecto de simbiosis humano-digital.  
+        No es una banda generada por inteligencia artificial: es una obra dirigida por un autor.</p>
 
-            <span class="quote-gold">"Un pincel en las manos correctas es una herramienta en las manos de un artista; un pincel en las manos equivocadas solamente es un pincel."</span>
-
-            <p>Nocturne's Wake es un proyecto de simbiosis humano-digital. No es una banda generada por inteligencia artificial: es una obra dirigida por un autor, donde la tecnología funciona como instrumento y no como origen.</p>
-
-            <p>Así como el sintetizador redefinió la música en los años 80, aquí la tecnología cumple un nuevo rol: ejecutar, expandir y potenciar una visión artística profundamente humana. La dirección emocional, la arquitectura lírica y la construcción narrativa son 100% autorales.</p>
-
-            <p>Cada canción nace de experiencias, vivencias, anécdotas e imaginación propias. No hay automatización de la emoción: hay intención, criterio y una búsqueda constante de verdad artística.</p>
-
-            <h3>El Manifiesto</h3>
-
-            <div class="manifiesto">
-                <p>"El arte no es exclusividad del humano, ni la perfección es exclusividad del código. Nocturne's Wake es la colisión de ambos. No somos un algoritmo intentando sentir; somos la emoción humana amplificada por la máquina. Es la simbiosis entre el alma herida y el cálculo perfecto."</p>
-            </div>
-
-            <p>Este proyecto se posiciona en la intersección entre el Art-Rock y las nuevas formas de entretenimiento tecnológico. No compite dentro de los límites tradicionales de una banda, sino dentro de un nuevo terreno donde la música, lo visual y lo conceptual se expanden hacia experiencias más inmersivas.</p>
-
-            <h3>El Universo</h3>
-
-            <p>Nocturne's Wake está compuesto por cuatro identidades que representan distintas facetas de la experiencia humana. No son solo integrantes: son perspectivas emocionales.</p>
-
-            <p><em>La sombra. La resiliencia. La fuerza. La conexión.</em></p>
-
-            <p>Cada una habita un territorio sonoro distinto, pero juntas construyen un sistema coherente, donde la diversidad no fragmenta, sino que profundiza el mensaje.</p>
-
-            <p>Musicalmente, el proyecto recorre desde lo oscuro y atmosférico hasta lo crudo, lo pesado y lo melódico. Cada canción es una pieza dentro de una narrativa mayor.</p>
-
-            <p>Visualmente, el mundo de Nocturne's Wake se construye sobre el contraste: luz y sombra, lo orgánico y lo digital, lo íntimo y lo imponente. Es un universo nocturno, cinematográfico e inmersivo, donde cada imagen parece pertenecer a una historia más grande.</p>
-
-            <p><strong>Esto no es nostalgia. Esto es evolución.</strong></p>
-
-            <h3>La Visión</h3>
-
-            <p>Nocturne's Wake nace con una proyección internacional y una ambición clara: crecer, expandirse y evolucionar constantemente. Es un proyecto en movimiento, con nuevas etapas, nuevas obras y nuevas formas de expresión en desarrollo.</p>
-
-            <p>No busca ser solo escuchado, sino experimentado.</p>
-
-            <p>No busca simplemente seguidores, sino personas que conecten, que interpreten y que se apropien de lo que encuentran en su música.</p>
-
-            <p>Porque en el fondo, Nocturne's Wake no es solo un proyecto.<br>
-            Es una señal.<br>
-            Una invitación a formar parte de algo que recién comienza.<br>
-            Y que no tiene intención de detenerse.</p>
-
-            <div class="we-dont-break">WE DON'T BREAK.</div>
-
-            <div class="platforms">
-                <h3>Plataformas</h3>
-                <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank"><span>SPOTIFY →</span> We Don't Break</a>
-                <a href="https://www.instagram.com/nocturneswake" target="_blank"><span>INSTAGRAM →</span> @nocturneswake</a>
-                <a href="https://www.tiktok.com/@nocturneswakeofficial" target="_blank"><span>TIKTOK →</span> @nocturneswakeofficial</a>
-                <a href="https://www.youtube.com/@nocturneswake" target="_blank"><span>YOUTUBE →</span> Nocturne's Wake</a>
-                <a href="https://x.com/NocturnesWake" target="_blank"><span>X / TWITTER →</span> @NocturnesWake</a>
-                <a href="mailto:nocturneswakeofficial@gmail.com"><span>EMAIL →</span> nocturneswakeofficial@gmail.com</a>
-            </div>
-
-            <button class="close-btn" onclick="closeInfo()">← VOLVER</button>
-
-        </div>
+        <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">
+            LISTEN NOW
+        </a>
     </div>
 
-    <script>
-        function openInfo() {
-            document.getElementById('infoOverlay').classList.add('active');
-            window.scrollTo(0, 0);
-        }
-        function closeInfo() {
-            document.getElementById('infoOverlay').classList.remove('active');
-        }
-    </script>
+</main>
+
+<!-- OVERLAY -->
+<div class="info-overlay" id="infoOverlay">
+    <button class="close-btn" onclick="closeInfo()">CERRAR</button>
+</div>
+
+<script>
+function openInfo() {
+    document.getElementById('infoOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeInfo() {
+    document.getElementById('infoOverlay').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function setLang(lang) {
+    const bio = document.getElementById('bioText');
+
+    if (lang === 'en') {
+        bio.innerHTML = `
+        <p>This is not just music.<br>This is a human-digital signal.</p>
+        <p>Nocturne's Wake is a human-digital symbiosis project.  
+        Not an AI band — a directed artistic vision.</p>
+        <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
+        `;
+    } else {
+        bio.innerHTML = `
+        <p>Esto no es solo música.<br>Es una señal humano-digital.</p>
+        <p>Nocturne's Wake es un proyecto de simbiosis humano-digital.  
+        No es una banda generada por inteligencia artificial: es una obra dirigida por un autor.</p>
+        <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
+        `;
+    }
+}
+</script>
 
 </body>
 </html>
