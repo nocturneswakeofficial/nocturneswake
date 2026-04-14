@@ -1,38 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nocturne's Wake | Official Site</title>
+    <title>NOCTURNE'S WAKE | Oficial</title>
     <style>
-        /* RESET GENERAL */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body, html { 
-            height: 100%; 
-            font-family: 'Courier New', Courier, monospace; 
-            background-color: #000; 
-            color: #fff;
-            overflow: hidden; 
-        }
+        body, html { height: 100%; background: #000; color: #fff; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; overflow-x: hidden; }
 
-        /* FONDO TOTAL (banda.jpg) */
-        .full-bg {
+        /* FONDO PRINCIPAL - Mejor visibilidad */
+        .hero-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('banda.jpg') no-repeat center center fixed;
+            background: url('banda.jpg') no-repeat center center;
             background-size: cover;
-            filter: brightness(35%) contrast(110%);
+            filter: brightness(60%) contrast(120%); /* Ahora sí se verá la banda */
             z-index: 1;
         }
 
-        /* CONTENIDO CENTRAL */
-        .content {
-            position: relative;
+        /* CAPA DE GRADIENTE PARA TEXTO */
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
             z-index: 2;
+        }
+
+        /* CONTENEDOR DE NAVEGACIÓN (BOTONES LLAMATIVOS A LA DERECHA) */
+        .nav-container {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255,255,255,0.6);
+        }
+
+        /* BLOQUE CENTRAL */
+        .main-content {
+            position: relative;
+            z-index: 5;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,89 +76,62 @@
             padding: 20px;
         }
 
-        /* FOTO PEQUEÑA (Portada con logo) */
-        .logo-small {
-            width: 280px; 
-            margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        .main-logo {
+            width: 350px;
+            max-width: 90%;
+            margin-bottom: 30px;
+            border: 2px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        h1 { 
-            font-size: 2.5rem; 
-            letter-spacing: 8px; 
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 10px;
             margin-bottom: 15px;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,1);
-        }
-
-        .bio {
-            max-width: 550px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #ccc;
-            background: rgba(0,0,0,0.6);
-            padding: 25px;
-            border-left: 3px solid #444;
-        }
-
-        /* MENÚ DERECHA (ACCESOS DIRECTOS) */
-        .nav-right {
-            position: fixed;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-        }
-
-        .nav-right a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 4px;
             text-transform: uppercase;
-            writing-mode: vertical-rl;
-            opacity: 0.5;
-            transition: 0.4s ease;
         }
 
-        .nav-right a:hover { 
-            opacity: 1; 
-            color: #ff0033;
+        .bio-text {
+            max-width: 700px;
+            background: rgba(0,0,0,0.85);
+            padding: 40px;
+            border: 1px solid #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        /* RESPONSIVO */
+        .bio-text b { color: #ff0033; } /* Color de acento para Nocturne's Wake */
+
         @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            .nav-right { right: 15px; }
-            .logo-small { width: 200px; }
+            .nav-container { position: relative; right: 0; top: 0; transform: none; flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+            h1 { font-size: 2rem; }
+            .main-content { height: auto; padding-top: 50px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="full-bg"></div>
+    <div class="hero-bg">
+        <div class="overlay"></div>
+    </div>
 
-    <nav class="nav-right">
-        <a href="https://distrokid.com/hyperfollow/nocturneswake/we-dont-break" target="_blank">SPOTIFY</a>
-        <a href="https://www.instagram.com/nocturneswake" target="_blank">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@nocturneswakeofficial" target="_blank">TIKTOK</a>
-        <a href="https://www.youtube.com/@nocturneswake" target="_blank">YOUTUBE</a>
-        <a href="https://x.com/nocturneswake" target="_blank">X / TWITTER</a>
+    <nav class="nav-container">
+        <a href="https://distrokid.com/hyperfollow/nocturneswake/we-dont-break" class="nav-button">SPOTIFY</a>
+        <a href="https://www.instagram.com/nocturneswake" class="nav-button">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button">TIKTOK</a>
+        <a href="https://www.youtube.com/@nocturneswake" class="nav-button">YOUTUBE</a>
+        <a href="https://x.com/nocturneswake" class="nav-button">X / TWITTER</a>
     </nav>
 
-    <div class="content">
-        <img src="Nocturnes Wake-Portada.jpg" class="logo-small" alt="Nocturne's Wake - We Don't Break">
+    <main class="main-content">
+        <img src="Nocturnes Wake-Portada.jpg" class="main-logo" alt="WE DON'T BREAK">
         
         <h1>NOCTURNE'S WAKE</h1>
         
-        <div class="bio">
-            <p>La primera banda virtual uruguaya de rock en inglés. Una simbiosis humano-digital donde la emoción es amplificada por la máquina.</p>
+        <div class="bio-text">
+            <p>La primera banda virtual uruguaya de rock en inglés. Una <b>simbiosis humano-digital</b> donde la emoción es amplificada por la máquina. Un proyecto transmedia que redefine la conexión entre el creador y su obra.</p>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
