@@ -1,752 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nocturne's Wake — We Don't Break</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --black: #080808;
-      --deep: #0d0d0d;
-      --surface: #111111;
-      --border: #222222;
-      --neon: #c8f542;
-      --neon-dim: rgba(200, 245, 66, 0.15);
-      --neon-glow: rgba(200, 245, 66, 0.4);
-      --red: #e63946;
-      --white: #f0ede6;
-      --muted: #666666;
-      --text: #c8c4bc;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--text);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      line-height: 1.7;
-      cursor: crosshair;
-    }
-
-    /* NOISE OVERLAY */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 3rem;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.98), transparent);
-      border-bottom: 1px solid rgba(200,245,66,0.08);
-    }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.15em;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--neon); }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2.5rem;
-    }
-
-    nav a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    nav a:hover { color: var(--neon); }
-
-    /* HERO */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 3rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse at 70% 50%, rgba(200,245,66,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 20% 80%, rgba(230,57,70,0.06) 0%, transparent 50%),
-        linear-gradient(to bottom, rgba(8,8,8,0.5) 0%, rgba(8,8,8,0.3) 40%, var(--black) 100%);
-      z-index: 1;
-    }
-
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      background-image: url('banda.jpg');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-      z-index: 0;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(200,245,66,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,245,66,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-    }
-
-    .hero-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--neon);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .hero-tag::before {
-      content: '';
-      display: inline-block;
-      width: 2rem;
-      height: 1px;
-      background: var(--neon);
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 12vw, 11rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-
-    h1 .wake {
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(240,237,230,0.4);
-    }
-
-    .hero-mantra {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-desc {
-      font-size: 1.2rem;
-      font-style: italic;
-      color: var(--text);
-      max-width: 580px;
-      line-height: 1.8;
-      border-left: 2px solid var(--neon);
-      padding-left: 1.5rem;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2rem;
-      right: 3rem;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      writing-mode: vertical-rl;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      z-index: 2;
-    }
-
-    .hero-scroll::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 4rem;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 7rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--neon);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-label::before {
-      content: '';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--neon);
-    }
-
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      letter-spacing: 0.05em;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 3rem;
-    }
-
-    /* MANIFIESTO */
-    #manifiesto {
-      border-top: 1px solid var(--border);
-    }
-
-    .manifiesto-text {
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      font-style: italic;
-      line-height: 1.9;
-      color: var(--white);
-      max-width: 750px;
-    }
-
-    .manifiesto-text p + p { margin-top: 1.5rem; }
-
-    .manifiesto-accent {
-      color: var(--neon);
-      font-style: normal;
-    }
-
-    /* PERSONAS */
-    #personajes { border-top: 1px solid var(--border); }
-
-    .members-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .member-photo {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      object-position: center top;
-      filter: grayscale(20%) contrast(1.1);
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .member-card {
-      background: var(--deep);
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.4s;
-    }
-
-    .member-card:hover { background: var(--surface); }
-
-    .member-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 0;
-      background: var(--neon);
-      transition: height 0.4s ease;
-    }
-
-    .member-card:hover::before { height: 100%; }
-
-    .member-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      color: rgba(200,245,66,0.06);
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .member-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .member-role {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--neon);
-      margin-bottom: 1.5rem;
-    }
-
-    .member-genre {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.05em;
-    }
-
-    .member-desc {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
-    }
-
-    .member-phrase {
-      margin-top: 1.5rem;
-      font-style: italic;
-      color: var(--white);
-      font-size: 1rem;
-      border-left: 1px solid var(--neon);
-      padding-left: 1rem;
-    }
-
-    /* FOUR WORLDS */
-    #fourworlds {
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .fw-quote {
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      font-style: italic;
-      color: var(--text);
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      line-height: 2;
-    }
-
-    .fw-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      color: var(--neon);
-      letter-spacing: 0.2em;
-    }
-
-    /* CANCIONES */
-    #canciones { border-top: 1px solid var(--border); }
-
-    .songs-intro {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--muted);
-      margin-bottom: 3rem;
-      max-width: 600px;
-    }
-
-    .songs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .song-card {
-      background: var(--deep);
-      padding: 1.5rem;
-      transition: background 0.3s;
-      position: relative;
-    }
-
-    .song-card:hover { background: var(--surface); }
-
-    .song-number {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.55rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .song-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .song-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.58rem;
-      color: var(--neon);
-      letter-spacing: 0.1em;
-    }
-
-    /* CONTACTO */
-    #contacto { border-top: 1px solid var(--border); }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      max-width: 700px;
-    }
-
-    .social-card {
-      background: var(--deep);
-      padding: 2rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .social-card:hover { background: var(--surface); }
-
-    .social-platform {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--neon);
-    }
-
-    .social-handle {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.1em;
-      color: var(--white);
-    }
-
-    .footer-logo span { color: var(--neon); }
-
-    .footer-mantra {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-content > * {
-      animation: fadeUp 0.8s ease forwards;
-      opacity: 0;
-    }
-
-    .hero-tag { animation-delay: 0.1s; }
-    h1 { animation-delay: 0.3s; }
-    .hero-mantra { animation-delay: 0.5s; }
-    .hero-desc { animation-delay: 0.7s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav ul { display: none; }
-      nav { padding: 1rem 1.5rem; }
-      #hero { padding: 0 1.5rem 4rem; }
-      section { padding: 5rem 1.5rem; }
-      .members-grid { grid-template-columns: 1fr; }
-      .songs-grid { grid-template-columns: repeat(2, 1fr); }
-      .social-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nocturne's Wake | Official Site</title>
+    <style>
+        /* RESET GENERAL */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body, html { 
+            height: 100%; 
+            font-family: 'Courier New', Courier, monospace; 
+            background-color: #000; 
+            color: #fff;
+            overflow: hidden; 
+        }
+
+        /* FONDO TOTAL (banda.jpg) */
+        .full-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('banda.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: brightness(35%) contrast(110%);
+            z-index: 1;
+        }
+
+        /* CONTENIDO CENTRAL */
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* FOTO PEQUEÑA (Portada con logo) */
+        .logo-small {
+            width: 280px; 
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            letter-spacing: 8px; 
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0,0,0,1);
+        }
+
+        .bio {
+            max-width: 550px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+            background: rgba(0,0,0,0.6);
+            padding: 25px;
+            border-left: 3px solid #444;
+        }
+
+        /* MENÚ DERECHA (ACCESOS DIRECTOS) */
+        .nav-right {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .nav-right a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            opacity: 0.5;
+            transition: 0.4s ease;
+        }
+
+        .nav-right a:hover { 
+            opacity: 1; 
+            color: #ff0033;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .nav-right { right: 15px; }
+            .logo-small { width: 200px; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="nav-logo">NOCTURNE'S <span>WAKE</span></a>
-    <ul>
-      <li><a href="#manifiesto">Manifiesto</a></li>
-      <li><a href="#personajes">La Banda</a></li>
-      <li><a href="#canciones">Canciones</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+    <div class="full-bg"></div>
 
-  <!-- HERO -->
-  <section id="hero" style="max-width:100%; padding-left:3rem; padding-right:3rem;">
-    <div class="hero-img"></div>
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Rock moderno · Estética nocturna · Neo-Noir</div>
-      <h1>NOCTURNE'S<br><span class="wake">WAKE</span></h1>
-      <div class="hero-mantra">We Don't Break</div>
-      <p class="hero-desc">
-        No es música para todos.<br>
-        Es para quienes sienten más de lo que pueden explicar.
-      </p>
+    <nav class="nav-right">
+        <a href="https://distrokid.com/hyperfollow/nocturneswake/we-dont-break" target="_blank">SPOTIFY</a>
+        <a href="https://www.instagram.com/nocturneswake" target="_blank">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@nocturneswakeofficial" target="_blank">TIKTOK</a>
+        <a href="https://www.youtube.com/@nocturneswake" target="_blank">YOUTUBE</a>
+        <a href="https://x.com/nocturneswake" target="_blank">X / TWITTER</a>
+    </nav>
+
+    <div class="content">
+        <img src="Nocturnes Wake-Portada.jpg" class="logo-small" alt="Nocturne's Wake - We Don't Break">
+        
+        <h1>NOCTURNE'S WAKE</h1>
+        
+        <div class="bio">
+            <p>La primera banda virtual uruguaya de rock en inglés. Una simbiosis humano-digital donde la emoción es amplificada por la máquina.</p>
+        </div>
     </div>
-    <div class="hero-scroll">Scroll</div>
-  </section>
-
-  <!-- MANIFIESTO -->
-  <section id="manifiesto">
-    <div class="section-label">Manifiesto</div>
-    <h2>QUIÉNES<br>SOMOS</h2>
-    <div class="manifiesto-text">
-      <p>Nocturne's Wake es una banda de rock moderno con una estética <span class="manifiesto-accent">nocturna, intensa y cinematográfica</span>. Cada canción explora conexiones humanas profundas: deseo, obsesión, atracción y el límite entre el control y la entrega.</p>
-      <p>Nocturne's Wake nace donde la emoción no se puede contener. Donde lo humano encuentra nuevas formas de expandirse.</p>
-      <p>No seguimos reglas. No repetimos fórmulas. Creamos desde la tensión, el deseo y la oscuridad.</p>
-      <p><span class="manifiesto-accent">No es sobre cómo se hace la música… es sobre lo que te hace sentir cuando la escuchás.</span></p>
-    </div>
-  </section>
-
-  <!-- PERSONAJES -->
-  <section id="personajes">
-    <div class="section-label">La Banda</div>
-    <h2>CUATRO<br>MUNDOS</h2>
-    <div class="members-grid">
-
-      <div class="member-card">
-        <img src="Dorian.png" alt="Dorian" class="member-photo" />
-        <div class="member-number">01</div>
-        <div class="member-name">DORIAN</div>
-        <div class="member-role">El Místico — La Sombra</div>
-        <div class="member-genre">Gothic Post-Punk · Darkwave · 80s Dark Wave</div>
-        <p class="member-desc">Bajo melódico y profundo, guitarras con flanger, atmósfera oscura y espacial. Su voz es un barítono hipnótico, distante y frío, envuelto en reverb.</p>
-        <p class="member-phrase">No te llama. Te atrae hacia la oscuridad.</p>
-      </div>
-
-      <div class="member-card">
-        <img src="Cal.png" alt="Cal" class="member-photo" />
-        <div class="member-number">02</div>
-        <div class="member-name">CAL</div>
-        <div class="member-role">El Resiliente — El Corazón</div>
-        <div class="member-genre">Grunge · Alternative Rock · 90s Seattle Sound</div>
-        <p class="member-desc">Guitarras distorsionadas con dinámica loud-quiet-loud, bajo saturado, drums secos y agresivos. Su voz es un barítono rasgado, imperfecto y emocionalmente crudo.</p>
-        <p class="member-phrase">No canta lo que siente. Lo grita hasta que duele.</p>
-      </div>
-
-      <div class="member-card">
-        <img src="Marcus.png" alt="Marcus" class="member-photo" />
-        <div class="member-number">03</div>
-        <div class="member-name">MARCUS</div>
-        <div class="member-role">La Fuerza — El Pilar</div>
-        <div class="member-genre">Heavy Metal · Groove Metal · Power Metal</div>
-        <p class="member-desc">Riffs palm-muted en cuerdas graves, bajo muy presente, drums secos y poderosos. Su voz es contenida en los versos, firme y contundente en los coros.</p>
-        <p class="member-phrase">No necesita gritar para que lo sientas en el pecho.</p>
-      </div>
-
-      <div class="member-card">
-        <img src="Rian.png" alt="Rían" class="member-photo" />
-        <div class="member-number">04</div>
-        <div class="member-name">RÍAN</div>
-        <div class="member-role">La Chispa — El Fuego</div>
-        <div class="member-genre">Dance-Rock · Pop-Rock · Arena Rock</div>
-        <p class="member-desc">Bajo funky, guitarras brillantes, groove infeccioso. Su voz es carismática, melódica y accesible, con armonías que se quedan pegadas.</p>
-        <p class="member-phrase">El que te hace mover antes de que te des cuenta.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOUR WORLDS ONE SOUND -->
-  <section id="fourworlds" style="max-width:100%; border-top: 1px solid var(--border); padding: 7rem 3rem; text-align:center;">
-    <div class="section-label" style="justify-content:center;">Una sola voz</div>
-    <div class="fw-quote">
-      "Four friends reaching out to you<br>
-      Four styles that are gonna tear you in two<br>
-      Four worlds that are gonna make you fall<br>
-      Don't try to run — we've already got you…"
-    </div>
-    <div class="fw-title">FOUR WORLDS ONE SOUND</div>
-  </section>
-
-  <!-- CANCIONES -->
-  <section id="canciones">
-    <div class="section-label">Catálogo</div>
-    <h2>CANCIONES</h2>
-    <p class="songs-intro">Cuatro mundos sonoros bajo una misma marca.</p>
-    <div class="songs-grid">
-
-      <div class="song-card">
-        <div class="song-number">01</div>
-        <div class="song-title">BURN WITH ME</div>
-        <div class="song-meta">Rían · Dance-Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">02</div>
-        <div class="song-title">SET ME ON FIRE</div>
-        <div class="song-meta">Cal · Grunge / Alternative Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">03</div>
-        <div class="song-title">KING OF THE QUIET</div>
-        <div class="song-meta">Marcus · Heavy Groove Metal</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">04</div>
-        <div class="song-title">ELECTRIC SKIN</div>
-        <div class="song-meta">Rían · Modern Pop-Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">05</div>
-        <div class="song-title">COME BACK LOUD</div>
-        <div class="song-meta">Cal · Alternative Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">06</div>
-        <div class="song-title">STATIC IN MY HEAD</div>
-        <div class="song-meta">Cal · Grunge</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">07</div>
-        <div class="song-title">COME BACKSTAGE</div>
-        <div class="song-meta">Rían · Dance-Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">08</div>
-        <div class="song-title">ELECTRIC POISON</div>
-        <div class="song-meta">Dorian · Dark Groove Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">09</div>
-        <div class="song-title">YOU ARE NOT ALONE</div>
-        <div class="song-meta">Cal · Alternative Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">10</div>
-        <div class="song-title">WE DON'T BREAK</div>
-        <div class="song-meta">Todos · Arena Rock</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">11</div>
-        <div class="song-title">HOLLOW ECHOES</div>
-        <div class="song-meta">Cal · Grunge</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">12</div>
-        <div class="song-title">WHITE KISS</div>
-        <div class="song-meta">Dorian · Post-Punk / Darkwave</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">13</div>
-        <div class="song-title">STILL HERE</div>
-        <div class="song-meta">Marcus · Heavy Metal</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">14</div>
-        <div class="song-title">EVERY NIGHT AGAIN</div>
-        <div class="song-meta">Cal · Grunge</div>
-      </div>
-      <div class="song-card">
-        <div class="song-number">15</div>
-        <div class="song-title">FOUR WORLDS ONE SOUND</div>
-        <div class="song-meta">Todos · Epic Rock</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <div class="section-label">Encontranos</div>
-    <h2>SEGUINOS</h2>
-    <div class="social-grid">
-      <a href="https://instagram.com/nocturneswake" target="_blank" class="social-card">
-        <span class="social-platform">Instagram</span>
-        <span class="social-handle">@nocturneswake</span>
-      </a>
-      <a href="https://tiktok.com/@nocturneswakeofficial" target="_blank" class="social-card">
-        <span class="social-platform">TikTok</span>
-        <span class="social-handle">@nocturneswakeofficial</span>
-      </a>
-      <a href="https://youtube.com/@NocturnesWake" target="_blank" class="social-card">
-        <span class="social-platform">YouTube</span>
-        <span class="social-handle">Nocturne's Wake</span>
-      </a>
-      <a href="mailto:nocturneswakeofficial@gmail.com" class="social-card">
-        <span class="social-platform">Email</span>
-        <span class="social-handle">Contacto</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">NOCTURNE'S <span>WAKE</span></div>
-    <div class="footer-mantra">We Don't Break</div>
-  </footer>
 
 </body>
 </html>
