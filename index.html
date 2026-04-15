@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOCTURNE'S WAKE | Official</title>
+<link rel="icon" href="favicon.png" type="image/png">
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -19,6 +20,80 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
     z-index:1;
 }
 
+/* IDIOMA */
+.lang-switch {
+    position:fixed;
+    top:20px; left:20px;
+    z-index:20;
+}
+.lang-switch button {
+    background:rgba(0,0,0,0.7);
+    border:1px solid #D4AF37;
+    color:#D4AF37;
+    padding:6px 10px;
+    margin-right:5px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:bold;
+}
+.lang-switch button:hover { background:#D4AF37; color:#000; }
+
+/* NAV DERECHO */
+.nav-container {
+    position:fixed;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding-right:20px;
+}
+.nav-button {
+    display:block;
+    background:rgba(0,0,0,0.82);
+    color:#fff;
+    padding:12px 18px;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border:1px solid rgba(255,255,255,0.4);
+    text-align:center;
+    min-width:160px;
+    cursor:pointer;
+    text-decoration:none;
+}
+.nav-button:hover { background:#fff; color:#000; }
+.btn-info { border-color:#D4AF37; color:#D4AF37; }
+.btn-info:hover { background:#D4AF37; color:#000; }
+
+/* NAV IZQUIERDO */
+.members-nav {
+    position:fixed;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:10;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding-left:20px;
+}
+.member-button {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:rgba(0,0,0,0.82);
+    color:#fff;
+    padding:10px 14px;
+    font-size:11px;
+    font-weight:bold;
+    border:1px solid rgba(255,255,255,0.25);
+    cursor:pointer;
+}
+
 /* MAIN */
 .main-content {
     position:relative;
@@ -29,39 +104,36 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
     justify-content:center;
     min-height:100vh;
     text-align:center;
-    padding:20px;
+    padding:20px 200px;
 }
 
 .main-logo {
-    width:160px;
-    opacity:0.9;
-    margin-bottom:20px;
+    width:180px;
+    opacity:0.85;
+    margin-bottom:22px;
 }
 
 h1 {
-    font-size:2.8rem;
-    letter-spacing:6px;
-    margin-bottom:15px;
+    font-size:3rem;
+    letter-spacing:8px;
+    margin-bottom:20px;
 }
 
-/* BLOQUE CENTRAL */
 .bio-box {
-    max-width:600px;
-    background:rgba(0,0,0,0.82);
-    padding:30px;
+    max-width:680px;
+    background:rgba(0,0,0,0.86);
+    padding:32px 38px;
     border-top:2px solid #D4AF37;
-    line-height:1.7;
+    line-height:1.8;
 }
 
-/* MICRO HOOK */
-.micro-hook {
-    font-size:11px;
-    letter-spacing:2px;
-    opacity:0.7;
-    margin-bottom:10px;
+.brush-quote {
+    display:block;
+    margin-top:15px;
+    color:#D4AF37;
+    font-style:italic;
 }
 
-/* CTA */
 .cta {
     margin-top:20px;
     display:inline-block;
@@ -72,13 +144,6 @@ h1 {
     cursor:pointer;
 }
 .cta:hover { background:#D4AF37; color:#000; }
-
-.brush-quote {
-    display:block;
-    margin-top:15px;
-    color:#D4AF37;
-    font-style:italic;
-}
 </style>
 </head>
 
@@ -86,9 +151,30 @@ h1 {
 
 <div class="hero-bg"></div>
 
+<div class="lang-switch">
+    <button onclick="setLang('es')">ES</button>
+    <button onclick="setLang('en')">EN</button>
+</div>
+
+<nav class="nav-container">
+    <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" class="nav-button" target="_blank">SPOTIFY</a>
+    <a href="https://www.instagram.com/nocturneswake" class="nav-button" target="_blank">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button" target="_blank">TIKTOK</a>
+    <a href="https://www.youtube.com/@nocturneswake" class="nav-button" target="_blank">YOUTUBE</a>
+    <button class="nav-button btn-info">HISTORIA / INFO</button>
+</nav>
+
+<nav class="members-nav">
+    <button class="member-button">DORIAN</button>
+    <button class="member-button">CAL</button>
+    <button class="member-button">MARCUS</button>
+    <button class="member-button">RÍAN</button>
+</nav>
+
 <main class="main-content">
 
-    <div class="micro-hook">
+    <!-- MICRO HOOK -->
+    <div style="font-size:12px; letter-spacing:2px; opacity:0.7; margin-bottom:10px;">
         YOU'RE NOT HERE BY ACCIDENT
     </div>
 
@@ -96,7 +182,7 @@ h1 {
 
     <h1>NOCTURNE'S WAKE</h1>
 
-    <div class="bio-box">
+    <div class="bio-box" id="bioText">
 
         <p><strong>If you feel too much at night… this is for you.</strong></p>
 
@@ -110,23 +196,20 @@ h1 {
         It finds you."
         </span>
 
-        <br>
-
         <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">
-            ENTER THE SOUND
+        ENTER THE SOUND
         </a>
 
-        <br>
+        <br><br>
 
         <button onclick="toggleAudio()" class="cta">
-            ACTIVATE SOUND
+        ACTIVATE SOUND
         </button>
 
     </div>
 
 </main>
 
-<!-- AUDIO -->
 <audio id="bgAudio" loop>
     <source src="audio-preview.mp3" type="audio/mpeg">
 </audio>
@@ -136,7 +219,6 @@ let audioPlaying = false;
 
 function toggleAudio() {
     const audio = document.getElementById("bgAudio");
-
     if (!audioPlaying) {
         audio.volume = 0.4;
         audio.play();
@@ -144,6 +226,29 @@ function toggleAudio() {
     } else {
         audio.pause();
         audioPlaying = false;
+    }
+}
+
+function setLang(lang) {
+    const bio = document.getElementById('bioText');
+    if (lang === 'en') {
+        bio.innerHTML = `
+        <p><strong>If you feel too much at night… this is for you.</strong></p>
+        <p>This is not meant to be understood.<br>It’s meant to stay with you.</p>
+        <span class="brush-quote">"A signal doesn't ask for permission.<br>It finds you."</span>
+        <a href="#" class="cta">ENTER THE SOUND</a>
+        <br><br>
+        <button onclick="toggleAudio()" class="cta">ACTIVATE SOUND</button>
+        `;
+    } else {
+        bio.innerHTML = `
+        <p><strong>Si sentís demasiado por la noche… esto es para vos.</strong></p>
+        <p>No está hecho para entenderse.<br>Está hecho para quedarse con vos.</p>
+        <span class="brush-quote">"Una señal no pide permiso.<br>Te encuentra."</span>
+        <a href="#" class="cta">ENTRAR AL SONIDO</a>
+        <br><br>
+        <button onclick="toggleAudio()" class="cta">ACTIVAR SONIDO</button>
+        `;
     }
 }
 </script>
