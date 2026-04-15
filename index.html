@@ -310,6 +310,41 @@ h1 {
 .platform-item a { color:#D4AF37; text-decoration:none; }
 .platform-item a:hover { text-decoration:underline; }
 
+/* ========== CONTADOR DE VISITAS ========== */
+.visit-counter {
+    position:fixed;
+    bottom:20px;
+    right:24px;
+    z-index:15;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+}
+.visit-counter .counter-label {
+    font-size:8px;
+    letter-spacing:2.5px;
+    color:rgba(212,175,55,0.6);
+    text-transform:uppercase;
+}
+.counter-digits {
+    display:flex;
+    gap:3px;
+}
+.counter-digit {
+    width:18px;
+    height:26px;
+    background:rgba(0,0,0,0.85);
+    border:1px solid rgba(212,175,55,0.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:bold;
+    color:#D4AF37;
+    font-family:'Courier New', monospace;
+}
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .nav-container { display:none; }
@@ -384,6 +419,7 @@ h1 {
     .lang-switch { top:auto; bottom:85px; left:10px; z-index:21; }
     .platform-grid { grid-template-columns:1fr; }
     .micro-hook { font-size:9px; }
+    .visit-counter { bottom:70px; right:12px; }
 }
 @media (min-width:901px) {
     .top-socials { display:none; }
@@ -482,6 +518,18 @@ h1 {
         <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
     </div>
 </main>
+
+<!-- CONTADOR DE VISITAS -->
+<div class="visit-counter">
+    <div class="counter-label">VISITAS</div>
+    <div class="counter-digits" id="counterDigits">
+        <div class="counter-digit">0</div>
+        <div class="counter-digit">0</div>
+        <div class="counter-digit">0</div>
+        <div class="counter-digit">0</div>
+        <div class="counter-digit">0</div>
+    </div>
+</div>
 
 <!-- OVERLAY: HISTORIA / INFO -->
 <div class="overlay" id="infoOverlay">
@@ -632,6 +680,20 @@ function toggleAudio() {
         btn.textContent = '♪ ACTIVATE SOUND';
     }
 }
+
+async function loadCounter() {
+    try {
+        const res = await fetch('https://api.countapi.xyz/hit/nocturneswake.github.io/visits');
+        const data = await res.json();
+        const count = data.value || 0;
+        const str = String(count).padStart(5, '0');
+        const digits = document.querySelectorAll('#counterDigits .counter-digit');
+        digits.forEach((el, i) => { el.textContent = str[i]; });
+    } catch(e) {
+        // Si falla la API, mantiene 00000
+    }
+}
+loadCounter();
 
 function setLang(lang) {
     const bio = document.getElementById('bioText');
