@@ -37,7 +37,24 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
 }
 .lang-switch button:hover { background:#D4AF37; color:#000; }
 
-/* ========== NAV DERECHO ========== */
+/* AUDIO BUTTON */
+.audio-btn {
+    position:fixed;
+    top:20px; right:20px;
+    z-index:20;
+    background:rgba(0,0,0,0.7);
+    border:1px solid rgba(212,175,55,0.5);
+    color:#D4AF37;
+    padding:6px 14px;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+}
+.audio-btn:hover { background:#D4AF37; color:#000; }
+
+/* NAV DERECHO */
 .nav-container {
     position:fixed;
     right:0;
@@ -66,13 +83,10 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
     transition:background 0.2s, color 0.2s;
 }
 .nav-button:hover { background:#fff; color:#000; }
-.btn-info {
-    border-color:#D4AF37;
-    color:#D4AF37;
-}
+.btn-info { border-color:#D4AF37; color:#D4AF37; }
 .btn-info:hover { background:#D4AF37; color:#000; }
 
-/* ========== NAV IZQUIERDO — MIEMBROS ========== */
+/* NAV IZQUIERDO — MIEMBROS */
 .members-nav {
     position:fixed;
     left:0;
@@ -102,8 +116,7 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
 }
 .member-button:hover { background:rgba(255,255,255,0.1); border-color:#fff; }
 .member-button .avatar {
-    width:36px;
-    height:36px;
+    width:36px; height:36px;
     border-radius:50%;
     object-fit:cover;
     object-position:center 15%;
@@ -119,8 +132,6 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
     letter-spacing:0.5px;
     text-transform:uppercase;
 }
-
-/* Color accent por personaje */
 .btn-dorian { border-left:3px solid #8B5CF6; }
 .btn-dorian:hover { border-color:#8B5CF6; }
 .btn-cal    { border-left:3px solid #64748B; }
@@ -130,7 +141,7 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
 .btn-rian   { border-left:3px solid #3B82F6; }
 .btn-rian:hover { border-color:#3B82F6; }
 
-/* ========== MAIN ========== */
+/* MAIN */
 .main-content {
     position:relative;
     z-index:5;
@@ -140,22 +151,26 @@ body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', A
     justify-content:center;
     min-height:100vh;
     text-align:center;
-    padding:20px 200px; /* espacio para navs laterales */
+    padding:20px 200px;
 }
-
+.micro-hook {
+    font-size:10px;
+    letter-spacing:3px;
+    color:rgba(212,175,55,0.7);
+    margin-bottom:14px;
+    text-transform:uppercase;
+}
 .main-logo {
     width:180px;
     opacity:0.85;
     margin-bottom:22px;
     box-shadow:0 0 25px rgba(0,0,0,0.7);
 }
-
 h1 {
     font-size:3rem;
     letter-spacing:8px;
     margin-bottom:20px;
 }
-
 .bio-box {
     max-width:680px;
     background:rgba(0,0,0,0.86);
@@ -163,14 +178,12 @@ h1 {
     border-top:2px solid #D4AF37;
     line-height:1.8;
 }
-
 .brush-quote {
     display:block;
     margin-top:15px;
     color:#D4AF37;
     font-style:italic;
 }
-
 .cta {
     margin-top:20px;
     display:inline-block;
@@ -178,11 +191,17 @@ h1 {
     padding:10px 25px;
     color:#D4AF37;
     text-decoration:none;
+    cursor:pointer;
+    background:none;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
     transition:background 0.2s, color 0.2s;
 }
 .cta:hover { background:#D4AF37; color:#000; }
 
-/* ========== OVERLAY GENÉRICO ========== */
+/* OVERLAY GENÉRICO */
 .overlay {
     display:none;
     position:fixed;
@@ -194,12 +213,7 @@ h1 {
     padding:60px 20px;
 }
 .overlay.active { display:block; }
-
-.overlay-content {
-    max-width:820px;
-    margin:auto;
-}
-
+.overlay-content { max-width:820px; margin:auto; }
 .overlay-content h2 {
     color:#D4AF37;
     font-size:1.8rem;
@@ -241,7 +255,6 @@ h1 {
     margin-top:30px;
     font-weight:bold;
 }
-
 .close-btn {
     display:block;
     margin:40px auto 0;
@@ -256,26 +269,17 @@ h1 {
 }
 .close-btn:hover { background:#D4AF37; color:#000; }
 
-/* ========== OVERLAY MIEMBRO ========== */
-.member-overlay-content {
-    max-width:700px;
-    margin:auto;
-    text-align:center;
-}
+/* OVERLAY MIEMBRO */
+.member-overlay-content { max-width:700px; margin:auto; text-align:center; }
 .member-photo {
-    width:220px;
-    height:220px;
+    width:220px; height:220px;
     border-radius:50%;
     object-fit:cover;
     object-position:center 15%;
     border:2px solid #D4AF37;
     margin-bottom:24px;
 }
-.member-name {
-    font-size:2.5rem;
-    letter-spacing:6px;
-    margin-bottom:6px;
-}
+.member-name { font-size:2.5rem; letter-spacing:6px; margin-bottom:6px; }
 .member-genre {
     color:#D4AF37;
     font-size:0.85rem;
@@ -283,18 +287,13 @@ h1 {
     text-transform:uppercase;
     margin-bottom:28px;
 }
-.member-bio {
-    text-align:left;
-    line-height:1.85;
-    color:#ddd;
-    font-size:0.95rem;
-}
+.member-bio { text-align:left; line-height:1.85; color:#ddd; font-size:0.95rem; }
 .member-accent-dorian { color:#8B5CF6; }
 .member-accent-cal    { color:#94A3B8; }
 .member-accent-marcus { color:#EF4444; }
 .member-accent-rian   { color:#3B82F6; }
 
-/* ========== PLATAFORMAS EN HISTORIA ========== */
+/* PLATAFORMAS */
 .platform-grid {
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -311,13 +310,11 @@ h1 {
 .platform-item a { color:#D4AF37; text-decoration:none; }
 .platform-item a:hover { text-decoration:underline; }
 
-/* ========== RESPONSIVE ========== */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-    /* Esconder navs laterales y poner menú bottom/top */
     .nav-container { display:none; }
     .members-nav { display:none; }
-
-    /* Barra top de redes */
+    .audio-btn { top:auto; bottom:130px; right:10px; font-size:10px; padding:5px 10px; }
     .top-socials {
         display:flex !important;
         position:fixed;
@@ -326,7 +323,6 @@ h1 {
         background:rgba(0,0,0,0.9);
         justify-content:center;
         flex-wrap:wrap;
-        gap:0;
         border-bottom:1px solid rgba(212,175,55,0.4);
     }
     .top-socials a, .top-socials button {
@@ -344,8 +340,6 @@ h1 {
     }
     .top-socials a:last-child, .top-socials button:last-child { border-right:none; }
     .top-socials .btn-info-mob { color:#D4AF37; }
-
-    /* Barra bottom de miembros */
     .bottom-members {
         display:flex !important;
         position:fixed;
@@ -364,7 +358,6 @@ h1 {
         padding:10px 4px;
         font-size:9px;
         font-weight:bold;
-        letter-spacing:0.5px;
         cursor:pointer;
         text-transform:uppercase;
         display:flex;
@@ -384,18 +377,14 @@ h1 {
     .bottom-members .bm-cal    { border-top:2px solid #64748B; }
     .bottom-members .bm-marcus { border-top:2px solid #EF4444; }
     .bottom-members .bm-rian   { border-top:2px solid #3B82F6; }
-
-    .main-content {
-        padding:70px 16px 90px;
-    }
+    .main-content { padding:70px 16px 90px; }
     h1 { font-size:1.8rem; letter-spacing:4px; }
     .main-logo { width:120px; }
     .bio-box { padding:22px 20px; }
     .lang-switch { top:auto; bottom:85px; left:10px; z-index:21; }
-
     .platform-grid { grid-template-columns:1fr; }
+    .micro-hook { font-size:9px; }
 }
-
 @media (min-width:901px) {
     .top-socials { display:none; }
     .bottom-members { display:none; }
@@ -406,13 +395,21 @@ h1 {
 
 <div class="hero-bg"></div>
 
-<!-- Lang switch (desktop: top-left / mobile: bottom-left) -->
+<!-- AUDIO -->
+<audio id="bgAudio" loop>
+    <source src="audio-preview.mp3" type="audio/mpeg">
+</audio>
+
+<!-- AUDIO BUTTON -->
+<button class="audio-btn" onclick="toggleAudio()" id="audioBtn">♪ ACTIVATE SOUND</button>
+
+<!-- LANG SWITCH -->
 <div class="lang-switch">
     <button onclick="setLang('es')">ES</button>
     <button onclick="setLang('en')">EN</button>
 </div>
 
-<!-- ===== DESKTOP: NAV DERECHO ===== -->
+<!-- DESKTOP: NAV DERECHO -->
 <nav class="nav-container">
     <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" class="nav-button" target="_blank">SPOTIFY</a>
     <a href="https://www.instagram.com/nocturneswake" class="nav-button" target="_blank">INSTAGRAM</a>
@@ -422,39 +419,27 @@ h1 {
     <button onclick="openOverlay('infoOverlay')" class="nav-button btn-info">HISTORIA / INFO</button>
 </nav>
 
-<!-- ===== DESKTOP: NAV IZQUIERDO — MIEMBROS ===== -->
+<!-- DESKTOP: NAV IZQUIERDO — MIEMBROS -->
 <nav class="members-nav">
     <button class="member-button btn-dorian" onclick="openOverlay('dorianOverlay')">
         <img src="Dorian.png" class="avatar" alt="Dorian">
-        <div class="member-label">
-            DORIAN
-            <span class="member-role">Dark · Electro</span>
-        </div>
+        <div class="member-label">DORIAN<span class="member-role">Dark · Electro</span></div>
     </button>
     <button class="member-button btn-cal" onclick="openOverlay('calOverlay')">
         <img src="Cal.png" class="avatar" alt="Cal">
-        <div class="member-label">
-            CAL
-            <span class="member-role">Grunge · Alt</span>
-        </div>
+        <div class="member-label">CAL<span class="member-role">Grunge · Alt</span></div>
     </button>
     <button class="member-button btn-marcus" onclick="openOverlay('marcusOverlay')">
         <img src="Marcus.png" class="avatar" alt="Marcus">
-        <div class="member-label">
-            MARCUS
-            <span class="member-role">Metal · Groove</span>
-        </div>
+        <div class="member-label">MARCUS<span class="member-role">Metal · Groove</span></div>
     </button>
     <button class="member-button btn-rian" onclick="openOverlay('rianOverlay')">
         <img src="Rian.png" class="avatar" alt="RÍAN">
-        <div class="member-label">
-            RÍAN
-            <span class="member-role">Pop · Rock</span>
-        </div>
+        <div class="member-label">RÍAN<span class="member-role">Pop · Rock</span></div>
     </button>
 </nav>
 
-<!-- ===== MOBILE: TOP BAR (redes) ===== -->
+<!-- MOBILE: TOP BAR -->
 <div class="top-socials">
     <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank">SPOTIFY</a>
     <a href="https://www.instagram.com/nocturneswake" target="_blank">IG</a>
@@ -464,28 +449,25 @@ h1 {
     <button onclick="openOverlay('infoOverlay')" class="btn-info-mob">INFO</button>
 </div>
 
-<!-- ===== MOBILE: BOTTOM BAR (miembros) ===== -->
+<!-- MOBILE: BOTTOM BAR -->
 <div class="bottom-members">
     <button class="bm-dorian" onclick="openOverlay('dorianOverlay')">
-        <img src="Dorian.png" class="bm-avatar" alt="Dorian">
-        DORIAN
+        <img src="Dorian.png" class="bm-avatar" alt="Dorian">DORIAN
     </button>
     <button class="bm-cal" onclick="openOverlay('calOverlay')">
-        <img src="Cal.png" class="bm-avatar" alt="Cal">
-        CAL
+        <img src="Cal.png" class="bm-avatar" alt="Cal">CAL
     </button>
     <button class="bm-marcus" onclick="openOverlay('marcusOverlay')">
-        <img src="Marcus.png" class="bm-avatar" alt="Marcus">
-        MARCUS
+        <img src="Marcus.png" class="bm-avatar" alt="Marcus">MARCUS
     </button>
     <button class="bm-rian" onclick="openOverlay('rianOverlay')">
-        <img src="Rian.png" class="bm-avatar" alt="RÍAN">
-        RÍAN
+        <img src="Rian.png" class="bm-avatar" alt="RÍAN">RÍAN
     </button>
 </div>
 
-<!-- ===== MAIN ===== -->
+<!-- MAIN -->
 <main class="main-content">
+    <div class="micro-hook" id="microHook">YOU'RE NOT HERE BY ACCIDENT</div>
     <img src="Nocturnes Wake-Portada.png" class="main-logo" alt="Nocturne's Wake">
     <h1>NOCTURNE'S WAKE</h1>
     <div class="bio-box" id="bioText">
@@ -496,80 +478,50 @@ h1 {
         "Un pincel en las manos correctas es una herramienta de artista;<br>
         en las manos equivocadas, es solo un pincel."
         </span>
+        <br>
         <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
     </div>
 </main>
 
-<!-- ============================================================ -->
-<!--  OVERLAY: HISTORIA / INFO                                    -->
-<!-- ============================================================ -->
+<!-- OVERLAY: HISTORIA / INFO -->
 <div class="overlay" id="infoOverlay">
 <div class="overlay-content">
-
     <h2>¿Qué es Nocturne's Wake?</h2>
-
     <p>Nocturne's Wake es un proyecto musical y artístico nacido en Uruguay, creado y dirigido por un autor uruguayo con una visión global. Más que una banda, es un universo conceptual donde la música, la estética y la narrativa conviven como partes de una misma experiencia.</p>
-
     <p>En su esencia, Nocturne's Wake no busca encajar en los formatos tradicionales. Nace como una propuesta que explora nuevas formas de crear, sentir y transmitir arte en un contexto donde lo humano y lo tecnológico ya no son opuestos, sino complementarios.</p>
-
     <hr class="overlay-divider">
-
     <h3>El Concepto</h3>
-
     <blockquote>"Un pincel en las manos correctas es una herramienta en las manos de un artista; un pincel en las manos equivocadas solamente es un pincel."</blockquote>
-
     <p>Nocturne's Wake es un proyecto de simbiosis humano-digital. No es una banda generada por inteligencia artificial: es una obra dirigida por un autor, donde la tecnología funciona como instrumento y no como origen.</p>
-
     <p>Así como el sintetizador redefinió la música en los años 80, aquí la tecnología cumple un nuevo rol: ejecutar, expandir y potenciar una visión artística profundamente humana. La dirección emocional, la arquitectura lírica y la construcción narrativa son 100% autorales.</p>
-
     <p>Cada canción nace de experiencias, vivencias, anécdotas e imaginación propias. No hay automatización de la emoción: hay intención, criterio y una búsqueda constante de verdad artística.</p>
-
     <hr class="overlay-divider">
-
     <h3>El Manifiesto</h3>
-
     <blockquote>"El arte no es exclusividad del humano, ni la perfección es exclusividad del código. Nocturne's Wake es la colisión de ambos. No somos un algoritmo intentando sentir; somos la emoción humana amplificada por la máquina. Es la simbiosis entre el alma herida y el cálculo perfecto."</blockquote>
-
     <p>Este proyecto se posiciona en la intersección entre el Art-Rock y las nuevas formas de entretenimiento tecnológico. No compite dentro de los límites tradicionales de una banda, sino dentro de un nuevo terreno donde la música, lo visual y lo conceptual se expanden hacia experiencias más inmersivas.</p>
-
     <hr class="overlay-divider">
-
     <h3>El Universo</h3>
-
     <p>Nocturne's Wake está compuesto por cuatro identidades que representan distintas facetas de la experiencia humana. No son solo integrantes: son perspectivas emocionales.</p>
-
     <p>
         <span class="member-accent-dorian">La sombra.</span> &nbsp;
         <span class="member-accent-cal">La resiliencia.</span> &nbsp;
         <span class="member-accent-marcus">La fuerza.</span> &nbsp;
         <span class="member-accent-rian">La conexión.</span>
     </p>
-
     <p>Cada una habita un territorio sonoro distinto, pero juntas construyen un sistema coherente, donde la diversidad no fragmenta, sino que profundiza el mensaje.</p>
-
     <p>Musicalmente, el proyecto recorre desde lo oscuro y atmosférico hasta lo crudo, lo pesado y lo melódico. Cada canción es una pieza dentro de una narrativa mayor.</p>
-
     <p>Visualmente, el mundo de Nocturne's Wake se construye sobre el contraste: luz y sombra, lo orgánico y lo digital, lo íntimo y lo imponente. Es un universo nocturno, cinematográfico e inmersivo, donde cada imagen parece pertenecer a una historia más grande.</p>
-
     <p><em>Esto no es nostalgia. Esto es evolución.</em></p>
-
     <hr class="overlay-divider">
-
     <h3>La Visión</h3>
-
     <p>Nocturne's Wake nace con una proyección internacional y una ambición clara: crecer, expandirse y evolucionar constantemente. Es un proyecto en movimiento, con nuevas etapas, nuevas obras y nuevas formas de expresión en desarrollo.</p>
-
     <p>No busca ser solo escuchado, sino experimentado.<br>
     No busca simplemente seguidores, sino personas que conecten, que interpreten y que se apropien de lo que encuentran en su música.</p>
-
     <p>Porque en el fondo, Nocturne's Wake no es solo un proyecto.<br>
     Es una señal. Una invitación a formar parte de algo que recién comienza.<br>
     Y que no tiene intención de detenerse.</p>
-
     <p class="mantra-line">WE DON'T BREAK.</p>
-
     <hr class="overlay-divider">
-
     <h3>Plataformas</h3>
     <div class="platform-grid">
         <div class="platform-item">🎵 <strong>Spotify</strong><br><a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank">Escuchar álbum</a></div>
@@ -579,14 +531,11 @@ h1 {
         <div class="platform-item">✖️ <strong>X / Twitter</strong><br><a href="https://x.com/NocturnesWake" target="_blank">@NocturnesWake</a></div>
         <div class="platform-item">✉️ <strong>Email</strong><br><a href="mailto:nocturneswakeofficial@gmail.com">nocturneswakeofficial@gmail.com</a></div>
     </div>
-
     <button class="close-btn" onclick="closeOverlay('infoOverlay')">CERRAR</button>
 </div>
 </div>
 
-<!-- ============================================================ -->
-<!--  OVERLAY: DORIAN                                             -->
-<!-- ============================================================ -->
+<!-- OVERLAY: DORIAN -->
 <div class="overlay" id="dorianOverlay">
 <div class="member-overlay-content">
     <img src="Dorian.png" class="member-photo" alt="Dorian">
@@ -602,9 +551,7 @@ h1 {
 </div>
 </div>
 
-<!-- ============================================================ -->
-<!--  OVERLAY: CAL                                                -->
-<!-- ============================================================ -->
+<!-- OVERLAY: CAL -->
 <div class="overlay" id="calOverlay">
 <div class="member-overlay-content">
     <img src="Cal.png" class="member-photo" alt="Cal">
@@ -620,9 +567,7 @@ h1 {
 </div>
 </div>
 
-<!-- ============================================================ -->
-<!--  OVERLAY: MARCUS                                             -->
-<!-- ============================================================ -->
+<!-- OVERLAY: MARCUS -->
 <div class="overlay" id="marcusOverlay">
 <div class="member-overlay-content">
     <img src="Marcus.png" class="member-photo" alt="Marcus">
@@ -638,9 +583,7 @@ h1 {
 </div>
 </div>
 
-<!-- ============================================================ -->
-<!--  OVERLAY: RÍAN                                               -->
-<!-- ============================================================ -->
+<!-- OVERLAY: RÍAN -->
 <div class="overlay" id="rianOverlay">
 <div class="member-overlay-content">
     <img src="Rian.png" class="member-photo" alt="RÍAN">
@@ -665,8 +608,6 @@ function closeOverlay(id) {
     document.getElementById(id).classList.remove('active');
     document.body.style.overflow = '';
 }
-
-// Cerrar con ESC
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         document.querySelectorAll('.overlay.active').forEach(function(el) {
@@ -676,28 +617,50 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+let audioPlaying = false;
+function toggleAudio() {
+    const audio = document.getElementById('bgAudio');
+    const btn = document.getElementById('audioBtn');
+    if (!audioPlaying) {
+        audio.volume = 0.35;
+        audio.play();
+        audioPlaying = true;
+        btn.textContent = '■ STOP SOUND';
+    } else {
+        audio.pause();
+        audioPlaying = false;
+        btn.textContent = '♪ ACTIVATE SOUND';
+    }
+}
+
 function setLang(lang) {
     const bio = document.getElementById('bioText');
+    const hook = document.getElementById('microHook');
     if (lang === 'en') {
+        hook.textContent = "YOU'RE NOT HERE BY ACCIDENT";
         bio.innerHTML = `
-        <p>This is not just music.<br>This is a human-digital signal.</p>
+        <p>If you feel too much at night… this is for you.</p>
         <p>Nocturne's Wake is a human-digital fusion project.<br>
-        Not an AI-generated band: a work directed by an author.</p>
+        Not an AI-generated band: a work directed by an author,<br>
+        where technology is the instrument, not the origin.</p>
         <span class="brush-quote">
         "A brush in the right hands is an artist's tool;<br>
         in the wrong hands, it is just a brush."
         </span>
+        <br>
         <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
         `;
     } else {
+        hook.textContent = 'NO ESTÁS AQUÍ POR ACCIDENTE';
         bio.innerHTML = `
-        <p>Esto no es solo música.<br>Es una simbiosis humano-digital.</p>
-        <p>Nocturne's Wake es un proyecto de fusión humano-digital.<br>
+        <p>Esto no es solo música.<br>Es una nueva forma de hacerla y de sentirla.</p>
+        <p>Nocturne's Wake es un proyecto que esxplora nuevas facetas musicales.<br>
         No es una banda generada por inteligencia artificial: es una obra dirigida por un autor.</p>
         <span class="brush-quote">
         "Un pincel en las manos correctas es una herramienta de artista;<br>
         en las manos equivocadas, es solo un pincel."
         </span>
+        <br>
         <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">LISTEN NOW</a>
         `;
     }
