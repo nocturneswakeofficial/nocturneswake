@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nocturne's Wake | Sitio Oficial">
 <meta property="og:description" content="Proyecto musical, artístico y conceptual de simbiosis humano-digital nacido en Uruguay.">
-<meta property="og:image" content="https://nocturneswakeofficial-rgb.github.io/nocturneswake/images/nocturnes-wake-band-cinematic-night-hero.jpg">
+<meta property="og:image" content="https://nocturneswakeofficial-rgb.github.io/nocturneswake/nocturnes-wake-band-cinematic-night-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.png" type="image/png">
 <style>
@@ -25,7 +25,7 @@ body {
     --fondo-sitio:#000;
     --color-texto:#fff;
     --color-acento:#D4AF37;
-    --textura-fondo:url('images/nocturnes-wake-band-cinematic-night-hero.png');
+    --textura-fondo:url('nocturnes-wake-band-cinematic-night-hero.jpg');
     background:var(--fondo-sitio);
     color:var(--color-texto);
     font-family:'Segoe UI', Arial, sans-serif;
@@ -34,26 +34,26 @@ body {
 }
 body.theme-dorian {
     --fondo-sitio:#04060c; --color-texto:#dff9ff; --color-acento:#00ffff;
-    --textura-fondo:url('images/dorian-neon-shadows-darkwave.png');
+    --textura-fondo:url('dorian-neon-shadows-darkwave.png');
 }
 body.theme-cal {
     --fondo-sitio:#15100b; --color-texto:#eadfd0; --color-acento:#9c4a1a;
-    --textura-fondo:url('images/cal-grunge-garage-texture-alt-rock.png');
+    --textura-fondo:url('cal-grunge-garage-texture-alt-rock.png');
 }
 body.theme-marcus {
     --fondo-sitio:#0c0d0f; --color-texto:#dcdde0; --color-acento:#7a7a7a;
-    --textura-fondo:url('images/marcus-heavy-metal-iron-strength.png');
+    --textura-fondo:url('marcus-heavy-metal-iron-strength.png');
 }
 body.theme-rian {
     --fondo-sitio:#09030f; --color-texto:#f4eaff; --color-acento:#bd00ff;
-    --textura-fondo:url('images/rian-pop-rock-night-stadium-lights.png');
+    --textura-fondo:url('rian pop rock night stadium lights.png');
 }
 
-/* FONDO (dos capas para fundido cruzado de 0.5s) */
+/* FONDO (dos capas para fundido cruzado de 0.5s; la imagen la asigna el JS) */
 .hero-bg { position:fixed; inset:0; z-index:1; background:var(--fondo-sitio); }
 .hero-bg i {
     position:absolute; inset:0;
-    background:var(--textura-fondo) no-repeat center center / cover;
+    background:no-repeat center center / cover;
     opacity:0; transition:opacity .5s ease;
 }
 .hero-bg i.on { opacity:1; }
@@ -195,15 +195,17 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .member-accent-marcus { color:#7a7a7a; }
 .member-accent-rian   { color:#bd00ff; }
 
-/* PILAR 2: REPRODUCTOR (carga el embed solo al pulsar → página rápida) */
+/* PILAR 2: REPRODUCTORES INDIVIDUALES (el embed carga solo al pulsar → página rápida) */
 .player {
-    max-width:640px; margin:0 auto 30px; padding:14px; text-align:left;
+    max-width:640px; margin:0 auto 18px; padding:14px; text-align:left;
     background:rgba(0,0,0,.55); border:1px solid var(--color-acento);
 }
+.player:last-of-type { margin-bottom:30px; }
 .pl-title { display:block; margin-bottom:10px; color:var(--color-acento); font-size:11px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
 .pl-btn {
-    width:100%; padding:14px; background:none; color:var(--color-acento);
-    border:1px dashed var(--color-acento); font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
+    display:block; width:100%; padding:14px; background:none; color:var(--color-acento);
+    border:1px dashed var(--color-acento); font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;
+    text-align:center; text-decoration:none; cursor:pointer;
     transition:background .2s, color .2s;
 }
 .pl-btn:hover { background:var(--color-acento); color:#000; }
@@ -338,19 +340,19 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 <!-- DESKTOP: NAV IZQUIERDO — MIEMBROS -->
 <nav class="members-nav">
     <button class="member-button btn-dorian" onclick="openMember('dorian')">
-        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="avatar" alt="Avatar de Dorian, la sombra darkwave y post-punk de Nocturne's Wake en neón cian" width="36" height="36">
+        <img src="dorian-neon-shadows-darkwave.png" class="avatar" alt="Avatar de Dorian, la sombra darkwave y post-punk de Nocturne's Wake en neón cian" width="36" height="36">
         <div class="member-label">DORIAN<span class="member-role">Dark · Electro</span></div>
     </button>
     <button class="member-button btn-cal" onclick="openMember('cal')">
-        <img src="images/cal-grunge-rusted-garage-portrait.png" class="avatar" alt="Avatar de Cal, la resiliencia grunge y rock alternativo de Nocturne's Wake en garaje oxidado" width="36" height="36">
+        <img src="cal-grunge-garage-texture-alt-rock.png" class="avatar" alt="Avatar de Cal, la resiliencia grunge y rock alternativo de Nocturne's Wake en garaje oxidado" width="36" height="36">
         <div class="member-label">CAL<span class="member-role">Grunge · Alt</span></div>
     </button>
     <button class="member-button btn-marcus" onclick="openMember('marcus')">
-        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="avatar" alt="Avatar de Marcus, la fuerza heavy metal groove de Nocturne's Wake en acero industrial" width="36" height="36">
+        <img src="marcus-heavy-metal-iron-strength.png" class="avatar" alt="Avatar de Marcus, la fuerza heavy metal groove de Nocturne's Wake en acero industrial" width="36" height="36">
         <div class="member-label">MARCUS<span class="member-role">Metal · Groove</span></div>
     </button>
     <button class="member-button btn-rian" onclick="openMember('rian')">
-        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="avatar" alt="Avatar de Rián, la conexión pop-rock alternativa de Nocturne's Wake bajo luces de estadio nocturno" width="36" height="36">
+        <img src="rian pop rock night stadium lights.png" class="avatar" alt="Avatar de Rián, la conexión pop-rock alternativa de Nocturne's Wake bajo luces de estadio nocturno" width="36" height="36">
         <div class="member-label">RÍAN<span class="member-role">Pop · Rock</span></div>
     </button>
 </nav>
@@ -370,16 +372,16 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 <!-- MOBILE: BOTTOM BAR -->
 <div class="bottom-members">
     <button class="bm-dorian" onclick="openMember('dorian')">
-        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="bm-avatar" alt="Avatar de Dorian, sombra darkwave en neón cian" width="28" height="28">DORIAN
+        <img src="dorian-neon-shadows-darkwave.png" class="bm-avatar" alt="Avatar de Dorian, sombra darkwave en neón cian" width="28" height="28">DORIAN
     </button>
     <button class="bm-cal" onclick="openMember('cal')">
-        <img src="images/cal-grunge-rusted-garage-portrait.png" class="bm-avatar" alt="Avatar de Cal, grunge alternativo en garaje oxidado" width="28" height="28">CAL
+        <img src="cal-grunge-garage-texture-alt-rock.png" class="bm-avatar" alt="Avatar de Cal, grunge alternativo en garaje oxidado" width="28" height="28">CAL
     </button>
     <button class="bm-marcus" onclick="openMember('marcus')">
-        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="bm-avatar" alt="Avatar de Marcus, heavy metal groove de acero industrial" width="28" height="28">MARCUS
+        <img src="marcus-heavy-metal-iron-strength.png" class="bm-avatar" alt="Avatar de Marcus, heavy metal groove de acero industrial" width="28" height="28">MARCUS
     </button>
     <button class="bm-rian" onclick="openMember('rian')">
-        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="bm-avatar" alt="Avatar de Rián, pop-rock nocturno de estadio en púrpura eléctrico" width="28" height="28">RÍAN
+        <img src="rian pop rock night stadium lights.png" class="bm-avatar" alt="Avatar de Rián, pop-rock nocturno de estadio en púrpura eléctrico" width="28" height="28">RÍAN
     </button>
 </div>
 
@@ -475,7 +477,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <h3 style="margin-top:0;">El origen de Nocturne's Wake</h3>
     <section class="bitacora" aria-label="Bitácora de cuadernos">
         <div class="bit-head">
-            <img class="bit-cover" src="images/we-dont-break-autobiography-book-cover.png" alt="Portada del libro autobiográfico We Don't Break, el origen de Nocturne's Wake: bitácora de cuadernos antiguos, historia real y rock nocturno" width="130" height="195" loading="lazy">
+            <img class="bit-cover" src="we-dont-break-autobiography-book-cover.png" alt="Portada del libro autobiográfico We Don't Break, el origen de Nocturne's Wake: bitácora de cuadernos antiguos, historia real y rock nocturno" width="130" height="195" loading="lazy">
             <div class="bit-meta">Bitácora de cuadernos<br>We Don't Break<br>El origen de Nocturne's Wake</div>
         </div>
         <article class="entrada">
@@ -500,7 +502,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 </div>
 </div>
 
-<!-- OVERLAY: PERSONAJES (pestañas + reproductor nativo) -->
+<!-- OVERLAY: PERSONAJES (pestañas + reproductores individuales) -->
 <div class="overlay member" id="memberOverlay" role="dialog" aria-modal="true" aria-label="Las cuatro identidades de Nocturne's Wake">
 <div class="member-overlay-content">
     <div class="tabs" role="tablist">
@@ -510,13 +512,19 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <button role="tab" data-m="rian" onclick="showMember('rian')">RÍAN</button>
     </div>
 
+    <!--
+      REPRODUCTORES: cada tema es un .player independiente.
+      Pegá el ID del track de Spotify en data-spotify (lo que va después de /track/ en el link)
+      o el ID del video en data-youtube. Mientras estén vacíos, el botón abre la búsqueda del tema en Spotify.
+    -->
+
     <!-- DORIAN -->
     <article class="panel" data-m="dorian" role="tabpanel" hidden>
-        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="member-photo" alt="Dorian, la sombra de Nocturne's Wake: retrato darkwave y post-punk entre neón cian frío y sombras góticas" width="220" height="220">
+        <img src="dorian-neon-shadows-darkwave.png" class="member-photo" alt="Dorian, la sombra de Nocturne's Wake: retrato darkwave y post-punk entre neón cian frío y sombras góticas" width="220" height="220">
         <div class="member-name">DORIAN</div>
         <div class="member-genre">Dark Electro · Post-Punk · Darkwave</div>
-        <!-- Reemplazá data-title y data-spotify (ID tras /track/) o data-youtube (ID del video) -->
-        <div class="player" data-title="" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="White Kiss" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Electric Poison" data-spotify="" data-youtube=""></div>
         <div class="member-bio">
             <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculado, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
             <p>Construido sobre una arquitectura de sintetizadores oscuros, guitarras atmosféricas y una presencia escénica que oscila entre lo hipnótico y lo perturbador, Dorian representa el territorio donde el deseo y el peligro se vuelven indistinguibles.</p>
@@ -527,10 +535,11 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 
     <!-- CAL -->
     <article class="panel" data-m="cal" role="tabpanel" hidden>
-        <img src="images/cal-grunge-rusted-garage-portrait.png" class="member-photo" alt="Cal, la resiliencia de Nocturne's Wake: retrato grunge y rock alternativo en garaje oxidado bajo la lluvia" width="220" height="220">
+        <img src="cal-grunge-garage-texture-alt-rock.png" class="member-photo" alt="Cal, la resiliencia de Nocturne's Wake: retrato grunge y rock alternativo en garaje oxidado bajo la lluvia" width="220" height="220">
         <div class="member-name">CAL</div>
         <div class="member-genre">Grunge · Alternative Rock</div>
-        <div class="player" data-title="" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Every Night Again" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Cal" data-spotify="" data-youtube=""></div>
         <div class="member-bio">
             <p>Cal es la resiliencia. No el triunfo fácil, sino el que viene después de haber perdido algo. Su música huele a garaje, a lluvia, a lo que queda cuando todo lo demás cae.</p>
             <p>Heredero directo del grunge de los 90 — la crudeza de Nirvana, la densidad emocional de Alice in Chains, la honestidad sin adornos de Pearl Jam — Cal convierte la incomodidad en arte y la fractura en canción.</p>
@@ -541,10 +550,11 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 
     <!-- MARCUS -->
     <article class="panel" data-m="marcus" role="tabpanel" hidden>
-        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="member-photo" alt="Marcus, la fuerza de Nocturne's Wake: retrato heavy metal groove de acero industrial, penumbra y fuerza de hierro" width="220" height="220">
+        <img src="marcus-heavy-metal-iron-strength.png" class="member-photo" alt="Marcus, la fuerza de Nocturne's Wake: retrato heavy metal groove de acero industrial, penumbra y fuerza de hierro" width="220" height="220">
         <div class="member-name">MARCUS</div>
         <div class="member-genre">Heavy Metal · Groove Metal</div>
         <div class="player" data-title="King of the Quiet" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Still Here" data-spotify="" data-youtube=""></div>
         <div class="member-bio">
             <p>Marcus es la fuerza. No la brutalidad sin forma, sino la potencia con intención. La diferencia entre un martillo y un bisturí cuando los dos cortan.</p>
             <p>Su territorio es el metal pesado con groove: riffs que se instalan en el cuerpo antes de que el cerebro los procese, ritmos que se sienten en el pecho. Marcus no construye canciones — construye estructuras que resisten.</p>
@@ -555,10 +565,11 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 
     <!-- RÍAN -->
     <article class="panel" data-m="rian" role="tabpanel" hidden>
-        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="member-photo" alt="Rián, la conexión de Nocturne's Wake: retrato pop-rock alternativo bajo luces de estadio nocturno y púrpura eléctrico" width="220" height="220">
+        <img src="rian pop rock night stadium lights.png" class="member-photo" alt="Rián, la conexión de Nocturne's Wake: retrato pop-rock alternativo bajo luces de estadio nocturno y púrpura eléctrico" width="220" height="220">
         <div class="member-name">RÍAN</div>
         <div class="member-genre">Pop-Rock · Alternative</div>
         <div class="player" data-title="Burn With Me" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Electric Skin" data-spotify="" data-youtube=""></div>
         <div class="member-bio">
             <p>RÍAN es la conexión. El puente entre lo que el proyecto dice y lo que el mundo escucha. Su música no requiere contexto: encuentra a las personas donde están y las lleva a donde el proyecto vive.</p>
             <p>Pop-rock con densidad emocional real. Melodías que se recuerdan, letras que se quedan. RÍAN es la cara más accesible de Nocturne's Wake sin ser la más superficial — es la puerta de entrada a un universo que va mucho más profundo.</p>
@@ -580,7 +591,7 @@ function openOverlay(id) {
 function closeOverlay(id) {
     document.getElementById(id).classList.remove('active');
     document.body.style.overflow = '';
-    if (id === 'memberOverlay') { stopPlayers(); setTheme(''); }
+    if (id === 'memberOverlay') { stopPlayers(); currentMember = ''; setTheme(''); }
 }
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
@@ -589,19 +600,34 @@ document.addEventListener('keydown', function(e) {
 });
 
 /* ---------- PILAR 1: TEMAS DINÁMICOS ---------- */
+/* Cada tema = una clase theme-<nombre> en <body>. Las variables CSS (acento, texto, fondo)
+   mutan con transición de 0.5s; la textura de fondo hace fundido cruzado entre dos capas. */
+const THEMES = ['dorian', 'cal', 'marcus', 'rian'];
+const HERO_BG = document.querySelectorAll('.hero-bg i');
 let currentTheme = '', layerIdx = 0, currentMember = '';
+
+function readTexture() {
+    return getComputedStyle(document.body).getPropertyValue('--textura-fondo').trim();
+}
 function setTheme(t) {
     if (t === currentTheme) return;
     currentTheme = t;
     const b = document.body;
-    b.className = t ? 'theme-' + t : '';
-    const layers = document.querySelectorAll('.hero-bg i');
-    const next = layers[1 - layerIdx];
-    next.style.backgroundImage = getComputedStyle(b).getPropertyValue('--textura-fondo');
+    THEMES.forEach(function(name) { b.classList.remove('theme-' + name); });
+    if (t) b.classList.add('theme-' + t);
+    const next = HERO_BG[1 - layerIdx];
+    next.style.backgroundImage = readTexture();
     next.classList.add('on');
-    layers[layerIdx].classList.remove('on');
+    HERO_BG[layerIdx].classList.remove('on');
     layerIdx = 1 - layerIdx;
 }
+/* Capa inicial fija (portada) + precarga de las 4 texturas para que el fundido no parpadee */
+HERO_BG[0].style.backgroundImage = readTexture();
+['dorian-neon-shadows-darkwave.png',
+ 'cal-grunge-garage-texture-alt-rock.png',
+ 'marcus-heavy-metal-iron-strength.png',
+ 'rian pop rock night stadium lights.png'].forEach(function(f) { new Image().src = f; });
+
 function openMember(m) {
     openOverlay('memberOverlay');
     showMember(m);
@@ -619,20 +645,30 @@ function showMember(m) {
     document.getElementById('memberOverlay').scrollTop = 0;
 }
 
-/* ---------- PILAR 2: REPRODUCTORES EMBEBIDOS ---------- */
-const ALBUM_ID = '5gIKXA6G81ALZ2zp96e0kw';
+/* ---------- PILAR 2: REPRODUCTORES INDIVIDUALES ---------- */
+/* Cada .player carga SOLO su tema (nunca el álbum completo). Sin ID cargado,
+   el botón abre la búsqueda del tema en Spotify hasta que pegues el ID. */
 document.querySelectorAll('.player').forEach(function(p) {
-    p.innerHTML = '<span class="pl-title">♪ ' + (p.dataset.title || 'Discografía') + '</span>' +
-                  '<button type="button" class="pl-btn">▶ Reproducir sin salir del sitio</button>';
-    p.querySelector('button').onclick = function() { loadPlayer(p); };
+    const d = p.dataset;
+    const title = d.title || 'Nocturne\'s Wake';
+    let action;
+    if (d.youtube || d.spotify) {
+        action = '<button type="button" class="pl-btn">▶ Reproducir sin salir del sitio</button>';
+    } else {
+        const q = encodeURIComponent(title + ' Nocturne\'s Wake');
+        action = '<a class="pl-btn" href="https://open.spotify.com/search/' + q + '" target="_blank" rel="noopener">▶ Escuchar en Spotify</a>';
+    }
+    p.innerHTML = '<span class="pl-title">♪ ' + title + '</span>' + action;
+    const btn = p.querySelector('button');
+    if (btn) btn.onclick = function() { loadPlayer(p); };
 });
 function loadPlayer(p) {
     if (audioPlaying) toggleAudio();
+    stopPlayers();                       /* un solo tema sonando a la vez */
     const d = p.dataset;
     let src, h;
-    if (d.youtube)      { src = 'https://www.youtube-nocookie.com/embed/' + d.youtube + '?rel=0'; h = 230; }
-    else if (d.spotify) { src = 'https://open.spotify.com/embed/track/' + d.spotify + '?theme=0'; h = 152; }
-    else                { src = 'https://open.spotify.com/embed/album/' + ALBUM_ID + '?theme=0'; h = 352; }
+    if (d.youtube) { src = 'https://www.youtube-nocookie.com/embed/' + d.youtube + '?rel=0'; h = 230; }
+    else           { src = 'https://open.spotify.com/embed/track/' + d.spotify + '?theme=0'; h = 152; }
     const f = document.createElement('iframe');
     f.src = src; f.height = h; f.loading = 'lazy';
     f.title = 'Reproductor de ' + (d.title || 'Nocturne\'s Wake');
@@ -670,7 +706,8 @@ function toggleAudio() {
     const btn = document.getElementById('audioBtn');
     if (!audioPlaying) {
         audio.volume = 0.35;
-        audio.play();
+        const pr = audio.play();
+        if (pr && pr.catch) pr.catch(function() {});
         audioPlaying = true;
         btn.textContent = '■ STOP SOUND';
     } else {
