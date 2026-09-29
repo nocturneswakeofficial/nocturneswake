@@ -6,11 +6,11 @@
 <title>Nocturne's Wake | Sitio Oficial</title>
 <meta name="description" content="Sitio oficial de Nocturne's Wake. Un proyecto musical, artístico y conceptual de simbiosis humano-digital nacido en Uruguay. Escucha nuestra música en Spotify y YouTube.">
 <meta name="theme-color" content="#000000">
-<link rel="canonical" href="https://github.io">
+<link rel="canonical" href="https://nocturneswakeofficial-rgb.github.io/nocturneswake/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nocturne's Wake | Sitio Oficial">
 <meta property="og:description" content="Proyecto musical, artístico y conceptual de simbiosis humano-digital nacido en Uruguay.">
-<meta property="og:image" content="https://github.ionocturnes-wake-portada-estacion-nocturna.png">
+<meta property="og:image" content="https://github.io">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.png" type="image/png">
 <style>
@@ -49,6 +49,29 @@ body.theme-rian {
     --textura-fondo:url('rian pop rock night stadium lights.png');
 }
 
+/* Ajuste técnico: Título dorado exclusivo para celulares. Oculto en PC, Smart TV y pantallas grandes */
+.titulo-movil {
+    text-align: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: #D4AF37; /* El dorado icónico del proyecto */
+    font-size: 1.8rem;
+    margin-top: 25px;
+    margin-bottom: -10px;
+    z-index: 10;
+    position: relative;
+    display: block;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); /* Sutil destello nocturno */
+}
+
+/* Regla estricta: Si la pantalla es de PC, Tablet grande, Smart TV o TV Box (más de 768px), el texto desaparece por completo */
+@media (min-width: 769px) {
+    .titulo-movil {
+        display: none !important;
+    }
+}
+
 /* FONDO (dos capas para fundido cruzado de 0.5s; la imagen la asigna el JS) */
 .hero-bg { position:fixed; inset:0; z-index:1; background:var(--fondo-sitio); }
 .hero-bg i {
@@ -58,6 +81,9 @@ body.theme-rian {
 }
 .hero-bg i.on { opacity:1; }
 .hero-bg::after {
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
+}
     content:""; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
 }
@@ -310,7 +336,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 </script>
 </head>
 <body>
-
+<h1 class="titulo-movil">NOCTURNE'S WAKE</h1>
 <div class="hero-bg"><i class="on"></i><i></i></div>
 
 <!-- AUDIO -->
