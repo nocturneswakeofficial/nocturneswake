@@ -5,429 +5,290 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nocturne's Wake | Sitio Oficial</title>
 <meta name="description" content="Sitio oficial de Nocturne's Wake. Un proyecto musical, artístico y conceptual de simbiosis humano-digital nacido en Uruguay. Escucha nuestra música en Spotify y YouTube.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://nocturneswakeofficial-rgb.github.io/nocturneswake/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nocturne's Wake | Sitio Oficial">
+<meta property="og:description" content="Proyecto musical, artístico y conceptual de simbiosis humano-digital nacido en Uruguay.">
+<meta property="og:image" content="https://nocturneswakeofficial-rgb.github.io/nocturneswake/images/nocturnes-wake-band-cinematic-night-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.png" type="image/png">
 <style>
+/* ========== PILAR 1: VARIABLES DE TEMA (mutan en <body>) ========== */
+@property --fondo-sitio  { syntax:'<color>'; inherits:true; initial-value:#000; }
+@property --color-texto  { syntax:'<color>'; inherits:true; initial-value:#fff; }
+@property --color-acento { syntax:'<color>'; inherits:true; initial-value:#D4AF37; }
+
 * { margin:0; padding:0; box-sizing:border-box; }
-body, html { height:100%; background:#000; color:#fff; font-family:'Segoe UI', Arial; overflow-x:hidden; }
-
-/* FONDO */
-.hero-bg {
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:url('banda.jpg') no-repeat center center;
-    background-size:cover;
-    z-index:1;
+html, body { height:100%; }
+body {
+    --fondo-sitio:#000;
+    --color-texto:#fff;
+    --color-acento:#D4AF37;
+    --textura-fondo:url('images/nocturnes-wake-band-cinematic-night-hero.jpg');
+    background:var(--fondo-sitio);
+    color:var(--color-texto);
+    font-family:'Segoe UI', Arial, sans-serif;
+    overflow-x:hidden;
+    transition:--fondo-sitio .5s ease, --color-texto .5s ease, --color-acento .5s ease;
 }
+body.theme-dorian {
+    --fondo-sitio:#04060c; --color-texto:#dff9ff; --color-acento:#00ffff;
+    --textura-fondo:url('images/dorian-neon-shadows-darkwave.jpg');
+}
+body.theme-cal {
+    --fondo-sitio:#15100b; --color-texto:#eadfd0; --color-acento:#9c4a1a;
+    --textura-fondo:url('images/cal-grunge-garage-texture-alt-rock.jpg');
+}
+body.theme-marcus {
+    --fondo-sitio:#0c0d0f; --color-texto:#dcdde0; --color-acento:#7a7a7a;
+    --textura-fondo:url('images/marcus-heavy-metal-iron-strength.jpg');
+}
+body.theme-rian {
+    --fondo-sitio:#09030f; --color-texto:#f4eaff; --color-acento:#bd00ff;
+    --textura-fondo:url('images/rian-pop-rock-night-stadium-lights.jpg');
+}
+
+/* FONDO (dos capas para fundido cruzado de 0.5s) */
+.hero-bg { position:fixed; inset:0; z-index:1; background:var(--fondo-sitio); }
+.hero-bg i {
+    position:absolute; inset:0;
+    background:var(--textura-fondo) no-repeat center center / cover;
+    opacity:0; transition:opacity .5s ease;
+}
+.hero-bg i.on { opacity:1; }
 .hero-bg::after {
-    content:"";
-    position:absolute;
-    top:0; left:0; right:0; bottom:0;
-    background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
 }
 
-/* IDIOMA */
-.lang-switch {
-    position:fixed;
-    top:20px; left:20px;
-    z-index:20;
+/* IDIOMA / AUDIO */
+.lang-switch { position:fixed; top:20px; left:20px; z-index:20; }
+.lang-switch button, .audio-btn {
+    background:rgba(0,0,0,.7);
+    border:1px solid var(--color-acento);
+    color:var(--color-acento);
+    cursor:pointer; font-weight:bold;
+    transition:background .2s, color .2s;
 }
-.lang-switch button {
-    background:rgba(0,0,0,0.7);
-    border:1px solid #D4AF37;
-    color:#D4AF37;
-    padding:6px 10px;
-    margin-right:5px;
-    cursor:pointer;
-    font-size:12px;
-    font-weight:bold;
-}
-.lang-switch button:hover { background:#D4AF37; color:#000; }
-
-/* AUDIO BUTTON */
-.audio-btn {
-    position:fixed;
-    top:20px; right:20px;
-    z-index:20;
-    background:rgba(0,0,0,0.7);
-    border:1px solid rgba(212,175,55,0.5);
-    color:#D4AF37;
-    padding:6px 14px;
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:1px;
-    cursor:pointer;
-    transition:background 0.2s, color 0.2s;
-}
-.audio-btn:hover { background:#D4AF37; color:#000; }
+.lang-switch button { padding:6px 10px; margin-right:5px; font-size:12px; }
+.audio-btn { position:fixed; top:20px; right:20px; z-index:20; padding:6px 14px; font-size:11px; letter-spacing:1px; }
+.lang-switch button:hover, .audio-btn:hover { background:var(--color-acento); color:#000; }
 
 /* NAV DERECHO */
 .nav-container {
-    position:fixed;
-    right:0;
-    top:50%;
-    transform:translateY(-50%);
-    z-index:10;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding-right:20px;
+    position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:10;
+    display:flex; flex-direction:column; gap:8px; padding-right:20px;
 }
 .nav-button {
-    display:block;
-    background:rgba(0,0,0,0.82);
-    color:#fff;
-    padding:12px 18px;
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    border:1px solid rgba(255,255,255,0.4);
-    text-align:center;
-    min-width:160px;
-    cursor:pointer;
-    text-decoration:none;
-    transition:background 0.2s, color 0.2s;
+    display:block; min-width:160px; padding:12px 18px;
+    background:rgba(0,0,0,.82); color:#fff;
+    font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; text-align:center; text-decoration:none;
+    border:1px solid rgba(255,255,255,.4); cursor:pointer;
+    transition:background .2s, color .2s;
 }
 .nav-button:hover { background:#fff; color:#000; }
-.btn-info { border-color:#D4AF37; color:#D4AF37; }
-.btn-info:hover { background:#D4AF37; color:#000; }
+.btn-info { border-color:var(--color-acento); color:var(--color-acento); }
+.btn-info:hover { background:var(--color-acento); color:#000; }
 
 /* NAV IZQUIERDO — MIEMBROS */
 .members-nav {
-    position:fixed;
-    left:0;
-    top:50%;
-    transform:translateY(-50%);
-    z-index:10;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-    padding-left:20px;
+    position:fixed; left:0; top:50%; transform:translateY(-50%); z-index:10;
+    display:flex; flex-direction:column; gap:8px; padding-left:20px;
 }
 .member-button {
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:rgba(0,0,0,0.82);
-    color:#fff;
-    padding:10px 14px;
-    font-size:11px;
-    font-weight:bold;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    border:1px solid rgba(255,255,255,0.25);
-    min-width:150px;
-    cursor:pointer;
-    transition:background 0.2s, color 0.2s, border-color 0.2s;
+    display:flex; align-items:center; gap:10px; min-width:150px; padding:10px 14px;
+    background:rgba(0,0,0,.82); color:#fff;
+    font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;
+    border:1px solid rgba(255,255,255,.25); cursor:pointer;
+    transition:background .2s, border-color .2s;
 }
-.member-button:hover { background:rgba(255,255,255,0.1); border-color:#fff; }
+.member-button:hover { background:rgba(255,255,255,.1); border-color:#fff; }
 .member-button .avatar {
-    width:36px; height:36px;
-    border-radius:50%;
-    object-fit:cover;
-    object-position:center 15%;
-    border:1px solid rgba(255,255,255,0.4);
-    flex-shrink:0;
+    width:36px; height:36px; border-radius:50%; flex-shrink:0;
+    object-fit:cover; object-position:center 15%; border:1px solid rgba(255,255,255,.4);
 }
-.member-button .member-label { line-height:1.3; }
-.member-button .member-role {
-    display:block;
-    font-size:9px;
-    color:#aaa;
-    font-weight:normal;
-    letter-spacing:0.5px;
-    text-transform:uppercase;
-}
-.btn-dorian { border-left:3px solid #8B5CF6; }
-.btn-dorian:hover { border-color:#8B5CF6; }
-.btn-cal    { border-left:3px solid #64748B; }
-.btn-cal:hover { border-color:#64748B; }
-.btn-marcus { border-left:3px solid #EF4444; }
-.btn-marcus:hover { border-color:#EF4444; }
-.btn-rian   { border-left:3px solid #3B82F6; }
-.btn-rian:hover { border-color:#3B82F6; }
+.member-button .member-label { line-height:1.3; text-align:left; }
+.member-button .member-role { display:block; font-size:9px; color:#aaa; font-weight:normal; letter-spacing:.5px; }
+.btn-dorian { border-left:3px solid #00ffff; } .btn-dorian:hover { border-color:#00ffff; }
+.btn-cal    { border-left:3px solid #9c4a1a; } .btn-cal:hover    { border-color:#9c4a1a; }
+.btn-marcus { border-left:3px solid #7a7a7a; } .btn-marcus:hover { border-color:#7a7a7a; }
+.btn-rian   { border-left:3px solid #bd00ff; } .btn-rian:hover   { border-color:#bd00ff; }
 
 /* MAIN */
 .main-content {
-    position:relative;
-    z-index:5;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    min-height:100vh;
-    text-align:center;
-    padding:14vh 200px 200px;
+    position:relative; z-index:5; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    text-align:center; padding:14vh 200px 200px;
 }
-.micro-hook {
-    font-size:10px;
-    letter-spacing:3px;
-    color:rgba(212,175,55,0.7);
-    margin-bottom:14px;
-    text-transform:uppercase;
-}
-h1 {
-    font-size:3rem;
-    letter-spacing:8px;
-    margin-bottom:20px;
-}
+.micro-hook { font-size:10px; letter-spacing:3px; color:var(--color-acento); margin-bottom:14px; text-transform:uppercase; }
+h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .bio-box {
-    position:fixed;
-    left:220px;
-    right:220px;
-    bottom:0;
-    max-width:none;
-    width:auto;
-    background:rgba(0,0,0,0.9);
-    padding:16px 38px;
-    border-top:2px solid #D4AF37;
-    line-height:1.35;
-    font-size:0.85rem;
-    z-index:8;
+    position:fixed; left:220px; right:220px; bottom:0; z-index:8;
+    padding:16px 38px; background:rgba(0,0,0,.9);
+    border-top:2px solid var(--color-acento); line-height:1.35; font-size:.85rem;
 }
 .bio-box p { margin-bottom:4px; }
-.bio-box .brush-quote { margin-top:6px; font-size:0.85rem; }
+.bio-box .brush-quote { margin-top:6px; font-size:.85rem; }
 .bio-box .cta { margin-top:10px; padding:8px 20px; }
-.brush-quote {
-    display:block;
-    margin-top:15px;
-    color:#D4AF37;
-    font-style:italic;
-}
+.brush-quote { display:block; margin-top:15px; color:var(--color-acento); font-style:italic; }
 .cta {
-    margin-top:20px;
-    display:inline-block;
-    border:1px solid #D4AF37;
-    padding:10px 25px;
-    color:#D4AF37;
-    text-decoration:none;
-    cursor:pointer;
-    background:none;
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    transition:background 0.2s, color 0.2s;
+    display:inline-block; margin-top:20px; padding:10px 25px;
+    border:1px solid var(--color-acento); color:var(--color-acento); background:none;
+    font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; cursor:pointer;
+    transition:background .2s, color .2s;
 }
-.cta:hover { background:#D4AF37; color:#000; }
+.cta:hover { background:var(--color-acento); color:#000; }
 
-/* OVERLAY GENÉRICO */
+/* OVERLAYS */
 .overlay {
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.96);
-    z-index:200;
-    overflow-y:auto;
-    padding:60px 20px;
+    display:none; position:fixed; inset:0; z-index:200; overflow-y:auto; padding:60px 20px;
+    background:rgba(0,0,0,.96);
+    background:color-mix(in srgb, var(--fondo-sitio) 95%, transparent);
 }
 .overlay.active { display:block; }
+.overlay.member {
+    background:rgba(0,0,0,.8);
+    background:color-mix(in srgb, var(--fondo-sitio) 78%, transparent);
+    -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+}
 .overlay-content { max-width:820px; margin:auto; }
-.overlay-content h2 {
-    color:#D4AF37;
-    font-size:1.8rem;
-    letter-spacing:3px;
-    margin-bottom:10px;
-    text-transform:uppercase;
+.overlay-content h2 { color:var(--color-acento); font-size:1.8rem; letter-spacing:3px; margin-bottom:10px; text-transform:uppercase; }
+.overlay-content h3 { color:var(--color-acento); font-size:1rem; letter-spacing:2px; margin:28px 0 10px; text-transform:uppercase; }
+.overlay-content p { line-height:1.85; color:var(--color-texto); margin-bottom:14px; font-size:.97rem; }
+.overlay-content blockquote, .member-bio blockquote {
+    border-left:3px solid var(--color-acento); padding-left:16px; margin:18px 0;
+    color:var(--color-acento); font-style:italic; line-height:1.7;
 }
-.overlay-content h3 {
-    color:#D4AF37;
-    font-size:1rem;
-    letter-spacing:2px;
-    margin:28px 0 10px;
-    text-transform:uppercase;
-}
-.overlay-content p {
-    line-height:1.85;
-    color:#ddd;
-    margin-bottom:14px;
-    font-size:0.97rem;
-}
-.overlay-content blockquote {
-    border-left:3px solid #D4AF37;
-    padding-left:16px;
-    color:#D4AF37;
-    font-style:italic;
-    margin:18px 0;
-    line-height:1.7;
-}
-.overlay-divider {
-    border:none;
-    border-top:1px solid rgba(212,175,55,0.3);
-    margin:30px 0;
-}
-.mantra-line {
-    font-size:1.2rem;
-    letter-spacing:4px;
-    color:#D4AF37;
-    text-align:center;
-    margin-top:30px;
-    font-weight:bold;
-}
+.overlay-divider { border:none; border-top:1px solid var(--color-acento); opacity:.35; margin:30px 0; }
+.mantra-line { font-size:1.2rem; letter-spacing:4px; color:var(--color-acento) !important; text-align:center; margin-top:30px; font-weight:bold; }
 .close-btn {
-    display:block;
-    margin:40px auto 0;
-    border:1px solid #D4AF37;
-    color:#D4AF37;
-    padding:10px 30px;
-    background:none;
-    cursor:pointer;
-    font-size:12px;
-    letter-spacing:2px;
-    transition:background 0.2s, color 0.2s;
+    display:block; margin:40px auto 0; padding:10px 30px;
+    border:1px solid var(--color-acento); color:var(--color-acento); background:none;
+    font-size:12px; letter-spacing:2px; cursor:pointer;
+    transition:background .2s, color .2s;
 }
-.close-btn:hover { background:#D4AF37; color:#000; }
+.close-btn:hover { background:var(--color-acento); color:#000; }
 
-/* OVERLAY MIEMBRO */
+/* PILAR 1: PERSONAJES — pestañas + paneles */
 .member-overlay-content { max-width:700px; margin:auto; text-align:center; }
+.tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-bottom:28px; }
+.tabs button {
+    flex:1 1 90px; padding:10px 8px; background:rgba(0,0,0,.45); color:var(--color-texto);
+    border:1px solid transparent; border-bottom:2px solid rgba(255,255,255,.2);
+    font-size:11px; font-weight:bold; letter-spacing:2px; cursor:pointer;
+    transition:color .3s, border-color .3s, background .3s;
+}
+.tabs button:hover { border-bottom-color:var(--color-acento); }
+.tabs button.on { color:var(--color-acento); border-bottom-color:var(--color-acento); background:rgba(0,0,0,.7); }
 .member-photo {
-    width:220px; height:220px;
-    border-radius:50%;
-    object-fit:cover;
-    object-position:center 15%;
-    border:2px solid #D4AF37;
-    margin-bottom:24px;
+    width:220px; height:220px; border-radius:50%; margin-bottom:24px;
+    object-fit:cover; object-position:center 15%; border:2px solid var(--color-acento);
 }
-.member-name { font-size:2.5rem; letter-spacing:6px; margin-bottom:6px; }
-.member-genre {
-    color:#D4AF37;
-    font-size:0.85rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:28px;
+.member-name { font-size:2.5rem; letter-spacing:6px; margin-bottom:6px; color:var(--color-acento); }
+.member-genre { color:var(--color-acento); font-size:.85rem; letter-spacing:3px; text-transform:uppercase; margin-bottom:28px; }
+.member-bio { text-align:left; line-height:1.85; color:var(--color-texto); font-size:.95rem; }
+.member-bio p { margin-bottom:14px; }
+.member-bio blockquote { margin-top:20px; }
+.member-accent-dorian { color:#00ffff; }
+.member-accent-cal    { color:#9c4a1a; }
+.member-accent-marcus { color:#7a7a7a; }
+.member-accent-rian   { color:#bd00ff; }
+
+/* PILAR 2: REPRODUCTOR (carga el embed solo al pulsar → página rápida) */
+.player {
+    max-width:640px; margin:0 auto 30px; padding:14px; text-align:left;
+    background:rgba(0,0,0,.55); border:1px solid var(--color-acento);
 }
-.member-bio { text-align:left; line-height:1.85; color:#ddd; font-size:0.95rem; }
-.member-accent-dorian { color:#8B5CF6; }
-.member-accent-cal    { color:#94A3B8; }
-.member-accent-marcus { color:#EF4444; }
-.member-accent-rian   { color:#3B82F6; }
+.pl-title { display:block; margin-bottom:10px; color:var(--color-acento); font-size:11px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+.pl-btn {
+    width:100%; padding:14px; background:none; color:var(--color-acento);
+    border:1px dashed var(--color-acento); font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
+    transition:background .2s, color .2s;
+}
+.pl-btn:hover { background:var(--color-acento); color:#000; }
+.player.on .pl-btn { display:none; }
+.player iframe { display:block; width:100%; border:0; border-radius:12px; }
+
+/* PILAR 3: BITÁCORA DE CUADERNOS */
+.bitacora {
+    margin:24px 0 10px; padding:28px 26px; text-align:left;
+    font-family:'Courier New', Courier, monospace;
+    background:
+        repeating-linear-gradient(180deg, transparent 0, transparent 33px, rgba(255,255,255,.07) 34px),
+        rgba(255,244,214,.04);
+    border:1px solid rgba(255,255,255,.22); outline:1px dashed rgba(255,255,255,.14); outline-offset:-8px;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+.bit-head { display:flex; gap:22px; align-items:center; margin-bottom:26px; padding-bottom:20px; border-bottom:1px dashed rgba(255,255,255,.3); }
+.bit-cover { width:130px; flex-shrink:0; border:1px solid var(--color-acento); transform:rotate(-2deg); box-shadow:0 6px 18px rgba(0,0,0,.6); }
+.bit-meta { font-size:.75rem; letter-spacing:3px; line-height:2; color:var(--color-acento); text-transform:uppercase; }
+.entrada { padding-left:16px; margin-bottom:22px; border-left:2px solid var(--color-acento); }
+.entrada .num { display:block; margin-bottom:4px; font-size:.7rem; letter-spacing:3px; color:var(--color-acento); opacity:.85; }
+.overlay-content .entrada p { font-family:'Courier New', Courier, monospace; font-size:1rem; line-height:34px; margin:0; }
+.bitacora .mantra-line { font-family:'Courier New', Courier, monospace; margin:26px 0 0; }
+.bit-actions { text-align:center; }
+.overlay.active .entrada { animation:pagina .6s ease both; }
+.overlay.active .entrada:nth-of-type(2) { animation-delay:.15s; }
+.overlay.active .entrada:nth-of-type(3) { animation-delay:.3s; }
+@keyframes pagina { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 
 /* PLATAFORMAS */
-.platform-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:16px;
-}
-.platform-item {
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(212,175,55,0.25);
-    padding:10px 14px;
-    font-size:0.85rem;
-    color:#ccc;
-}
-.platform-item a { color:#D4AF37; text-decoration:none; }
+.platform-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+.platform-item { padding:10px 14px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.2); font-size:.85rem; color:var(--color-texto); }
+.platform-item a { color:var(--color-acento); text-decoration:none; }
 .platform-item a:hover { text-decoration:underline; }
 
-/* CONTADOR WEBSITEOUT */
-.visit-counter {
-    position:fixed;
-    bottom:20px;
-    right:24px;
-    z-index:15;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:4px;
-}
-.visit-counter .counter-label {
-    font-size:8px;
-    letter-spacing:2.5px;
-    color:rgba(212,175,55,0.6);
-    text-transform:uppercase;
-}
+/* CONTADOR */
+.visit-counter { position:fixed; bottom:20px; right:24px; z-index:15; display:flex; flex-direction:column; align-items:center; gap:4px; }
+.visit-counter .counter-label { font-size:8px; letter-spacing:2.5px; color:var(--color-acento); opacity:.7; text-transform:uppercase; }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
-    .nav-container { display:none; }
-    .members-nav { display:none; }
+@media (max-width:900px) {
+    .nav-container, .members-nav { display:none; }
     .audio-btn { top:auto; bottom:130px; right:10px; font-size:10px; padding:5px 10px; }
     .top-socials {
-        display:flex !important;
-        position:fixed;
-        top:0; left:0; right:0;
-        z-index:20;
-        background:rgba(0,0,0,0.9);
-        justify-content:center;
-        flex-wrap:wrap;
-        border-bottom:1px solid rgba(212,175,55,0.4);
+        display:flex !important; position:fixed; top:0; left:0; right:0; z-index:20;
+        justify-content:center; flex-wrap:wrap; background:rgba(0,0,0,.9);
+        border-bottom:1px solid var(--color-acento);
     }
     .top-socials a, .top-socials button {
-        color:#fff;
-        background:none;
-        border:none;
-        border-right:1px solid rgba(255,255,255,0.15);
-        padding:10px 12px;
-        font-size:10px;
-        font-weight:bold;
-        letter-spacing:1px;
-        text-decoration:none;
-        cursor:pointer;
-        text-transform:uppercase;
+        padding:10px 12px; background:none; color:#fff; border:none; border-right:1px solid rgba(255,255,255,.15);
+        font-size:10px; font-weight:bold; letter-spacing:1px; text-decoration:none; text-transform:uppercase; cursor:pointer;
     }
     .top-socials a:last-child, .top-socials button:last-child { border-right:none; }
-    .top-socials .btn-info-mob { color:#D4AF37; }
+    .top-socials .btn-info-mob { color:var(--color-acento); }
     .bottom-members {
-        display:flex !important;
-        position:fixed;
-        bottom:0; left:0; right:0;
-        z-index:20;
-        background:rgba(0,0,0,0.92);
-        justify-content:space-around;
-        border-top:1px solid rgba(212,175,55,0.4);
+        display:flex !important; position:fixed; bottom:0; left:0; right:0; z-index:20;
+        justify-content:space-around; background:rgba(0,0,0,.92); border-top:1px solid var(--color-acento);
     }
     .bottom-members button {
-        flex:1;
-        background:none;
-        border:none;
-        border-right:1px solid rgba(255,255,255,0.1);
-        color:#fff;
-        padding:10px 4px;
-        font-size:9px;
-        font-weight:bold;
-        cursor:pointer;
-        text-transform:uppercase;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:4px;
+        flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:10px 4px;
+        background:none; color:#fff; border:none; border-right:1px solid rgba(255,255,255,.1);
+        font-size:9px; font-weight:bold; text-transform:uppercase; cursor:pointer;
     }
     .bottom-members button:last-child { border-right:none; }
-    .bottom-members .bm-avatar {
-        width:28px; height:28px;
-        border-radius:50%;
-        object-fit:cover;
-        object-position:center 15%;
-        border:1px solid rgba(255,255,255,0.4);
-    }
-    .bottom-members .bm-dorian { border-top:2px solid #8B5CF6; }
-    .bottom-members .bm-cal    { border-top:2px solid #64748B; }
-    .bottom-members .bm-marcus { border-top:2px solid #EF4444; }
-    .bottom-members .bm-rian   { border-top:2px solid #3B82F6; }
+    .bottom-members .bm-avatar { width:28px; height:28px; border-radius:50%; object-fit:cover; object-position:center 15%; border:1px solid rgba(255,255,255,.4); }
+    .bm-dorian { border-top:2px solid #00ffff; } .bm-cal { border-top:2px solid #9c4a1a; }
+    .bm-marcus { border-top:2px solid #7a7a7a; } .bm-rian { border-top:2px solid #bd00ff; }
     .main-content { padding:70px 16px 90px; justify-content:center; }
     h1 { font-size:1.8rem; letter-spacing:4px; }
-    .bio-box {
-        position:static;
-        left:auto; right:auto;
-        margin-top:24px;
-        padding:22px 20px;
-        font-size:0.9rem;
-        line-height:1.6;
-    }
+    .bio-box { position:static; margin-top:24px; padding:22px 20px; font-size:.9rem; line-height:1.6; }
     .bio-box p { margin-bottom:14px; }
-    .bio-box .brush-quote { font-size:0.9rem; }
+    .bio-box .brush-quote { font-size:.9rem; }
     .bio-box .cta { padding:10px 25px; }
     .lang-switch { top:auto; bottom:85px; left:10px; z-index:21; }
     .platform-grid { grid-template-columns:1fr; }
     .micro-hook { font-size:9px; }
     .visit-counter { bottom:70px; right:12px; }
+    .overlay { padding:50px 16px; }
+    .member-photo { width:170px; height:170px; }
+    .member-name { font-size:2rem; letter-spacing:4px; }
+    .bitacora { padding:22px 16px; }
+    .bit-head { flex-direction:column; text-align:center; }
 }
-@media (min-width:901px) {
-    .top-socials { display:none; }
-    .bottom-members { display:none; }
-}
+@media (min-width:901px) { .top-socials, .bottom-members { display:none; } }
+@media (prefers-reduced-motion:reduce) { * { transition:none !important; animation:none !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -448,14 +309,12 @@ h1 {
 </head>
 <body>
 
-<div class="hero-bg"></div>
+<div class="hero-bg"><i class="on"></i><i></i></div>
 
 <!-- AUDIO -->
 <audio id="bgAudio" loop>
     <source src="audio-preview.mp3" type="audio/mpeg">
 </audio>
-
-<!-- AUDIO BUTTON -->
 <button class="audio-btn" onclick="toggleAudio()" id="audioBtn">♪ ACTIVATE SOUND</button>
 
 <!-- LANG SWITCH -->
@@ -478,20 +337,20 @@ h1 {
 
 <!-- DESKTOP: NAV IZQUIERDO — MIEMBROS -->
 <nav class="members-nav">
-    <button class="member-button btn-dorian" onclick="openOverlay('dorianOverlay')">
-        <img src="Dorian.png" class="avatar" alt="Dorian">
+    <button class="member-button btn-dorian" onclick="openMember('dorian')">
+        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="avatar" alt="Avatar de Dorian, la sombra darkwave y post-punk de Nocturne's Wake en neón cian" width="36" height="36">
         <div class="member-label">DORIAN<span class="member-role">Dark · Electro</span></div>
     </button>
-    <button class="member-button btn-cal" onclick="openOverlay('calOverlay')">
-        <img src="Cal.png" class="avatar" alt="Cal">
+    <button class="member-button btn-cal" onclick="openMember('cal')">
+        <img src="images/cal-grunge-rusted-garage-portrait.png" class="avatar" alt="Avatar de Cal, la resiliencia grunge y rock alternativo de Nocturne's Wake en garaje oxidado" width="36" height="36">
         <div class="member-label">CAL<span class="member-role">Grunge · Alt</span></div>
     </button>
-    <button class="member-button btn-marcus" onclick="openOverlay('marcusOverlay')">
-        <img src="Marcus.png" class="avatar" alt="Marcus">
+    <button class="member-button btn-marcus" onclick="openMember('marcus')">
+        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="avatar" alt="Avatar de Marcus, la fuerza heavy metal groove de Nocturne's Wake en acero industrial" width="36" height="36">
         <div class="member-label">MARCUS<span class="member-role">Metal · Groove</span></div>
     </button>
-    <button class="member-button btn-rian" onclick="openOverlay('rianOverlay')">
-        <img src="Rian.png" class="avatar" alt="RÍAN">
+    <button class="member-button btn-rian" onclick="openMember('rian')">
+        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="avatar" alt="Avatar de Rián, la conexión pop-rock alternativa de Nocturne's Wake bajo luces de estadio nocturno" width="36" height="36">
         <div class="member-label">RÍAN<span class="member-role">Pop · Rock</span></div>
     </button>
 </nav>
@@ -510,17 +369,17 @@ h1 {
 
 <!-- MOBILE: BOTTOM BAR -->
 <div class="bottom-members">
-    <button class="bm-dorian" onclick="openOverlay('dorianOverlay')">
-        <img src="Dorian.png" class="bm-avatar" alt="Dorian">DORIAN
+    <button class="bm-dorian" onclick="openMember('dorian')">
+        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="bm-avatar" alt="Avatar de Dorian, sombra darkwave en neón cian" width="28" height="28">DORIAN
     </button>
-    <button class="bm-cal" onclick="openOverlay('calOverlay')">
-        <img src="Cal.png" class="bm-avatar" alt="Cal">CAL
+    <button class="bm-cal" onclick="openMember('cal')">
+        <img src="images/cal-grunge-rusted-garage-portrait.png" class="bm-avatar" alt="Avatar de Cal, grunge alternativo en garaje oxidado" width="28" height="28">CAL
     </button>
-    <button class="bm-marcus" onclick="openOverlay('marcusOverlay')">
-        <img src="Marcus.png" class="bm-avatar" alt="Marcus">MARCUS
+    <button class="bm-marcus" onclick="openMember('marcus')">
+        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="bm-avatar" alt="Avatar de Marcus, heavy metal groove de acero industrial" width="28" height="28">MARCUS
     </button>
-    <button class="bm-rian" onclick="openOverlay('rianOverlay')">
-        <img src="Rian.png" class="bm-avatar" alt="RÍAN">RÍAN
+    <button class="bm-rian" onclick="openMember('rian')">
+        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="bm-avatar" alt="Avatar de Rián, pop-rock nocturno de estadio en púrpura eléctrico" width="28" height="28">RÍAN
     </button>
 </div>
 
@@ -548,7 +407,7 @@ h1 {
 </div>
 
 <!-- OVERLAY: HISTORIA / INFO -->
-<div class="overlay" id="infoOverlay">
+<div class="overlay" id="infoOverlay" role="dialog" aria-modal="true" aria-label="Historia e información">
 <div class="overlay-content">
     <h2>¿Qué es Nocturne's Wake?</h2>
     <p>Nocturne's Wake es un proyecto musical y artístico nacido en Uruguay, creado y dirigido por un autor uruguayo con una visión global. Más que una banda, es un universo conceptual donde la música, la estética y la narrativa conviven como partes de una misma experiencia.</p>
@@ -600,7 +459,7 @@ h1 {
 </div>
 
 <!-- OVERLAY: NEWSLETTER -->
-<div class="overlay" id="newsletterOverlay">
+<div class="overlay" id="newsletterOverlay" role="dialog" aria-modal="true" aria-label="Newsletter">
 <div class="overlay-content" style="text-align:center;">
     <h2>ÚNETE A LA SEÑAL</h2>
     <p>Recibe adelantos, lanzamientos y contenido exclusivo de Nocturne's Wake antes que nadie.</p>
@@ -609,84 +468,111 @@ h1 {
 </div>
 </div>
 
-<!-- OVERLAY: EL LIBRO -->
-<div class="overlay" id="libroOverlay">
+<!-- OVERLAY: EL LIBRO — BITÁCORA DE CUADERNOS -->
+<div class="overlay" id="libroOverlay" role="dialog" aria-modal="true" aria-label="El libro We Don't Break">
 <div class="overlay-content" style="text-align:center;">
     <h2>WE DON'T BREAK</h2>
     <h3 style="margin-top:0;">El origen de Nocturne's Wake</h3>
-    <img src="libro-portada.png" alt="We Don't Break - El origen de Nocturne's Wake" style="max-width:260px; width:100%; margin:20px auto; display:block; border:1px solid rgba(212,175,55,0.4);">
-    <p>La historia real detrás de Dorian, Cal, Marcus y Rián. El libro autobiográfico que da origen a todo el universo de Nocturne's Wake. Lectura gratuita.</p>
-    <a href="we-dont-break-el-origen.pdf" target="_blank" class="cta" style="margin-top:10px;">LEER ONLINE</a>
-    <a href="we-dont-break-el-origen.pdf" download class="cta" style="margin-top:10px; margin-left:10px; opacity:0.75;">DESCARGAR PDF</a>
+    <section class="bitacora" aria-label="Bitácora de cuadernos">
+        <div class="bit-head">
+            <img class="bit-cover" src="images/we-dont-break-autobiography-book-cover.png" alt="Portada del libro autobiográfico We Don't Break, el origen de Nocturne's Wake: bitácora de cuadernos antiguos, historia real y rock nocturno" width="130" height="195" loading="lazy">
+            <div class="bit-meta">Bitácora de cuadernos<br>We Don't Break<br>El origen de Nocturne's Wake</div>
+        </div>
+        <article class="entrada">
+            <span class="num">ENTRADA 01</span>
+            <p>La historia real detrás de Dorian, Cal, Marcus y Rián.</p>
+        </article>
+        <article class="entrada">
+            <span class="num">ENTRADA 02</span>
+            <p>El libro autobiográfico que da origen a todo el universo de Nocturne's Wake.</p>
+        </article>
+        <article class="entrada">
+            <span class="num">ENTRADA 03</span>
+            <p>Lectura gratuita.</p>
+        </article>
+        <p class="mantra-line">WE DON'T BREAK.</p>
+        <div class="bit-actions">
+            <a href="we-dont-break-el-origen.pdf" target="_blank" class="cta" style="margin-top:20px;">LEER ONLINE</a>
+            <a href="we-dont-break-el-origen.pdf" download class="cta" style="margin-top:20px; margin-left:10px; opacity:.75;">DESCARGAR PDF</a>
+        </div>
+    </section>
     <button class="close-btn" onclick="closeOverlay('libroOverlay')">CERRAR</button>
 </div>
 </div>
 
-<!-- OVERLAY: DORIAN -->
-<div class="overlay" id="dorianOverlay">
+<!-- OVERLAY: PERSONAJES (pestañas + reproductor nativo) -->
+<div class="overlay member" id="memberOverlay" role="dialog" aria-modal="true" aria-label="Las cuatro identidades de Nocturne's Wake">
 <div class="member-overlay-content">
-    <img src="Dorian.png" class="member-photo" alt="Dorian">
-    <div class="member-name member-accent-dorian">DORIAN</div>
-    <div class="member-genre">Dark Electro · Post-Punk · Darkwave</div>
-    <div class="member-bio">
-        <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculado, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
-        <p>Construido sobre una arquitectura de sintetizadores oscuros, guitarras atmosféricas y una presencia escénica que oscila entre lo hipnótico y lo perturbador, Dorian representa el territorio donde el deseo y el peligro se vuelven indistinguibles.</p>
-        <p>Sus canciones son rituales. Cada nota es una decisión. Cada silencio, una amenaza.</p>
-        <blockquote style="border-color:#8B5CF6; color:#8B5CF6; margin-top:20px;">"No estoy aquí para que me entiendas. Estoy aquí para que no puedas ignorarme."</blockquote>
+    <div class="tabs" role="tablist">
+        <button role="tab" data-m="dorian" onclick="showMember('dorian')">DORIAN</button>
+        <button role="tab" data-m="cal" onclick="showMember('cal')">CAL</button>
+        <button role="tab" data-m="marcus" onclick="showMember('marcus')">MARCUS</button>
+        <button role="tab" data-m="rian" onclick="showMember('rian')">RÍAN</button>
     </div>
-    <button class="close-btn" onclick="closeOverlay('dorianOverlay')" style="border-color:#8B5CF6; color:#8B5CF6;">CERRAR</button>
-</div>
-</div>
 
-<!-- OVERLAY: CAL -->
-<div class="overlay" id="calOverlay">
-<div class="member-overlay-content">
-    <img src="Cal.png" class="member-photo" alt="Cal">
-    <div class="member-name member-accent-cal">CAL</div>
-    <div class="member-genre">Grunge · Alternative Rock</div>
-    <div class="member-bio">
-        <p>Cal es la resiliencia. No el triunfo fácil, sino el que viene después de haber perdido algo. Su música huele a garaje, a lluvia, a lo que queda cuando todo lo demás cae.</p>
-        <p>Heredero directo del grunge de los 90 — la crudeza de Nirvana, la densidad emocional de Alice in Chains, la honestidad sin adornos de Pearl Jam — Cal convierte la incomodidad en arte y la fractura en canción.</p>
-        <p>Sus versos son contención. Sus coros, explosiones. La distancia entre uno y otro es donde vive.</p>
-        <blockquote style="border-color:#94A3B8; color:#94A3B8; margin-top:20px;">"No busco tu aprobación. Busco tu reconocimiento."</blockquote>
-    </div>
-    <button class="close-btn" onclick="closeOverlay('calOverlay')" style="border-color:#94A3B8; color:#94A3B8;">CERRAR</button>
-</div>
-</div>
+    <!-- DORIAN -->
+    <article class="panel" data-m="dorian" role="tabpanel" hidden>
+        <img src="images/dorian-darkwave-neon-shadow-portrait.png" class="member-photo" alt="Dorian, la sombra de Nocturne's Wake: retrato darkwave y post-punk entre neón cian frío y sombras góticas" width="220" height="220">
+        <div class="member-name">DORIAN</div>
+        <div class="member-genre">Dark Electro · Post-Punk · Darkwave</div>
+        <!-- Reemplazá data-title y data-spotify (ID tras /track/) o data-youtube (ID del video) -->
+        <div class="player" data-title="" data-spotify="" data-youtube=""></div>
+        <div class="member-bio">
+            <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculado, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
+            <p>Construido sobre una arquitectura de sintetizadores oscuros, guitarras atmosféricas y una presencia escénica que oscila entre lo hipnótico y lo perturbador, Dorian representa el territorio donde el deseo y el peligro se vuelven indistinguibles.</p>
+            <p>Sus canciones son rituales. Cada nota es una decisión. Cada silencio, una amenaza.</p>
+            <blockquote>"No estoy aquí para que me entiendas. Estoy aquí para que no puedas ignorarme."</blockquote>
+        </div>
+    </article>
 
-<!-- OVERLAY: MARCUS -->
-<div class="overlay" id="marcusOverlay">
-<div class="member-overlay-content">
-    <img src="Marcus.png" class="member-photo" alt="Marcus">
-    <div class="member-name member-accent-marcus">MARCUS</div>
-    <div class="member-genre">Heavy Metal · Groove Metal</div>
-    <div class="member-bio">
-        <p>Marcus es la fuerza. No la brutalidad sin forma, sino la potencia con intención. La diferencia entre un martillo y un bisturí cuando los dos cortan.</p>
-        <p>Su territorio es el metal pesado con groove: riffs que se instalan en el cuerpo antes de que el cerebro los procese, ritmos que se sienten en el pecho. Marcus no construye canciones — construye estructuras que resisten.</p>
-        <p>Dentro del universo de Nocturne's Wake, Marcus representa el límite. El punto donde la música deja de ser sonido y se convierte en presión.</p>
-        <blockquote style="border-color:#EF4444; color:#EF4444; margin-top:20px;">"La fuerza no es no sentir. Es seguir de pie mientras sientes todo."</blockquote>
-    </div>
-    <button class="close-btn" onclick="closeOverlay('marcusOverlay')" style="border-color:#EF4444; color:#EF4444;">CERRAR</button>
-</div>
-</div>
+    <!-- CAL -->
+    <article class="panel" data-m="cal" role="tabpanel" hidden>
+        <img src="images/cal-grunge-rusted-garage-portrait.png" class="member-photo" alt="Cal, la resiliencia de Nocturne's Wake: retrato grunge y rock alternativo en garaje oxidado bajo la lluvia" width="220" height="220">
+        <div class="member-name">CAL</div>
+        <div class="member-genre">Grunge · Alternative Rock</div>
+        <div class="player" data-title="" data-spotify="" data-youtube=""></div>
+        <div class="member-bio">
+            <p>Cal es la resiliencia. No el triunfo fácil, sino el que viene después de haber perdido algo. Su música huele a garaje, a lluvia, a lo que queda cuando todo lo demás cae.</p>
+            <p>Heredero directo del grunge de los 90 — la crudeza de Nirvana, la densidad emocional de Alice in Chains, la honestidad sin adornos de Pearl Jam — Cal convierte la incomodidad en arte y la fractura en canción.</p>
+            <p>Sus versos son contención. Sus coros, explosiones. La distancia entre uno y otro es donde vive.</p>
+            <blockquote>"No busco tu aprobación. Busco tu reconocimiento."</blockquote>
+        </div>
+    </article>
 
-<!-- OVERLAY: RÍAN -->
-<div class="overlay" id="rianOverlay">
-<div class="member-overlay-content">
-    <img src="Rian.png" class="member-photo" alt="RÍAN">
-    <div class="member-name member-accent-rian">RÍAN</div>
-    <div class="member-genre">Pop-Rock · Alternative</div>
-    <div class="member-bio">
-        <p>RÍAN es la conexión. El puente entre lo que el proyecto dice y lo que el mundo escucha. Su música no requiere contexto: encuentra a las personas donde están y las lleva a donde el proyecto vive.</p>
-        <p>Pop-rock con densidad emocional real. Melodías que se recuerdan, letras que se quedan. RÍAN es la cara más accesible de Nocturne's Wake sin ser la más superficial — es la puerta de entrada a un universo que va mucho más profundo.</p>
-        <p>Donde los demás exploran los bordes, RÍAN construye el centro. Y el centro es donde todo comienza.</p>
-        <blockquote style="border-color:#3B82F6; color:#3B82F6; margin-top:20px;">"La conexión no es debilidad. Es la razón por la que todo esto existe."</blockquote>
-    </div>
-    <button class="close-btn" onclick="closeOverlay('rianOverlay')" style="border-color:#3B82F6; color:#3B82F6;">CERRAR</button>
+    <!-- MARCUS -->
+    <article class="panel" data-m="marcus" role="tabpanel" hidden>
+        <img src="images/marcus-heavy-metal-steel-groove-portrait.png" class="member-photo" alt="Marcus, la fuerza de Nocturne's Wake: retrato heavy metal groove de acero industrial, penumbra y fuerza de hierro" width="220" height="220">
+        <div class="member-name">MARCUS</div>
+        <div class="member-genre">Heavy Metal · Groove Metal</div>
+        <div class="player" data-title="King of the Quiet" data-spotify="" data-youtube=""></div>
+        <div class="member-bio">
+            <p>Marcus es la fuerza. No la brutalidad sin forma, sino la potencia con intención. La diferencia entre un martillo y un bisturí cuando los dos cortan.</p>
+            <p>Su territorio es el metal pesado con groove: riffs que se instalan en el cuerpo antes de que el cerebro los procese, ritmos que se sienten en el pecho. Marcus no construye canciones — construye estructuras que resisten.</p>
+            <p>Dentro del universo de Nocturne's Wake, Marcus representa el límite. El punto donde la música deja de ser sonido y se convierte en presión.</p>
+            <blockquote>"La fuerza no es no sentir. Es seguir de pie mientras sientes todo."</blockquote>
+        </div>
+    </article>
+
+    <!-- RÍAN -->
+    <article class="panel" data-m="rian" role="tabpanel" hidden>
+        <img src="images/rian-pop-rock-midnight-stadium-portrait.png" class="member-photo" alt="Rián, la conexión de Nocturne's Wake: retrato pop-rock alternativo bajo luces de estadio nocturno y púrpura eléctrico" width="220" height="220">
+        <div class="member-name">RÍAN</div>
+        <div class="member-genre">Pop-Rock · Alternative</div>
+        <div class="player" data-title="Burn With Me" data-spotify="" data-youtube=""></div>
+        <div class="member-bio">
+            <p>RÍAN es la conexión. El puente entre lo que el proyecto dice y lo que el mundo escucha. Su música no requiere contexto: encuentra a las personas donde están y las lleva a donde el proyecto vive.</p>
+            <p>Pop-rock con densidad emocional real. Melodías que se recuerdan, letras que se quedan. RÍAN es la cara más accesible de Nocturne's Wake sin ser la más superficial — es la puerta de entrada a un universo que va mucho más profundo.</p>
+            <p>Donde los demás exploran los bordes, RÍAN construye el centro. Y el centro es donde todo comienza.</p>
+            <blockquote>"La conexión no es debilidad. Es la razón por la que todo esto existe."</blockquote>
+        </div>
+    </article>
+
+    <button class="close-btn" onclick="closeOverlay('memberOverlay')">CERRAR</button>
 </div>
 </div>
 
 <script>
+/* ---------- OVERLAYS ---------- */
 function openOverlay(id) {
     document.getElementById(id).classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -694,7 +580,76 @@ function openOverlay(id) {
 function closeOverlay(id) {
     document.getElementById(id).classList.remove('active');
     document.body.style.overflow = '';
+    if (id === 'memberOverlay') { stopPlayers(); setTheme(''); }
 }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.overlay.active').forEach(function(el) { closeOverlay(el.id); });
+    }
+});
+
+/* ---------- PILAR 1: TEMAS DINÁMICOS ---------- */
+let currentTheme = '', layerIdx = 0, currentMember = '';
+function setTheme(t) {
+    if (t === currentTheme) return;
+    currentTheme = t;
+    const b = document.body;
+    b.className = t ? 'theme-' + t : '';
+    const layers = document.querySelectorAll('.hero-bg i');
+    const next = layers[1 - layerIdx];
+    next.style.backgroundImage = getComputedStyle(b).getPropertyValue('--textura-fondo');
+    next.classList.add('on');
+    layers[layerIdx].classList.remove('on');
+    layerIdx = 1 - layerIdx;
+}
+function openMember(m) {
+    openOverlay('memberOverlay');
+    showMember(m);
+}
+function showMember(m) {
+    if (m !== currentMember) stopPlayers();
+    currentMember = m;
+    document.querySelectorAll('.panel').forEach(function(p) { p.hidden = p.dataset.m !== m; });
+    document.querySelectorAll('.tabs button').forEach(function(t) {
+        const on = t.dataset.m === m;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', on);
+    });
+    setTheme(m);
+    document.getElementById('memberOverlay').scrollTop = 0;
+}
+
+/* ---------- PILAR 2: REPRODUCTORES EMBEBIDOS ---------- */
+const ALBUM_ID = '5gIKXA6G81ALZ2zp96e0kw';
+document.querySelectorAll('.player').forEach(function(p) {
+    p.innerHTML = '<span class="pl-title">♪ ' + (p.dataset.title || 'Discografía') + '</span>' +
+                  '<button type="button" class="pl-btn">▶ Reproducir sin salir del sitio</button>';
+    p.querySelector('button').onclick = function() { loadPlayer(p); };
+});
+function loadPlayer(p) {
+    if (audioPlaying) toggleAudio();
+    const d = p.dataset;
+    let src, h;
+    if (d.youtube)      { src = 'https://www.youtube-nocookie.com/embed/' + d.youtube + '?rel=0'; h = 230; }
+    else if (d.spotify) { src = 'https://open.spotify.com/embed/track/' + d.spotify + '?theme=0'; h = 152; }
+    else                { src = 'https://open.spotify.com/embed/album/' + ALBUM_ID + '?theme=0'; h = 352; }
+    const f = document.createElement('iframe');
+    f.src = src; f.height = h; f.loading = 'lazy';
+    f.title = 'Reproductor de ' + (d.title || 'Nocturne\'s Wake');
+    f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    f.allowFullscreen = true;
+    p.appendChild(f);
+    p.classList.add('on');
+}
+function stopPlayers() {
+    document.querySelectorAll('.player').forEach(function(p) {
+        const f = p.querySelector('iframe');
+        if (f) f.remove();
+        p.classList.remove('on');
+    });
+}
+
+/* ---------- NEWSLETTER ---------- */
 let newsletterScriptLoaded = false;
 function openNewsletter() {
     openOverlay('newsletterOverlay');
@@ -707,15 +662,8 @@ function openNewsletter() {
         document.getElementById('newsletterFormContainer').appendChild(s);
     }
 }
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.overlay.active').forEach(function(el) {
-            el.classList.remove('active');
-        });
-        document.body.style.overflow = '';
-    }
-});
 
+/* ---------- AUDIO DE FONDO ---------- */
 let audioPlaying = false;
 function toggleAudio() {
     const audio = document.getElementById('bgAudio');
@@ -732,6 +680,7 @@ function toggleAudio() {
     }
 }
 
+/* ---------- IDIOMA ---------- */
 function setLang(lang) {
     const bio = document.getElementById('bioText');
     const hook = document.getElementById('microHook');
