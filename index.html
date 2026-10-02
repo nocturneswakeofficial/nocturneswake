@@ -59,44 +59,37 @@
     {
       "@type": "MusicRecording",
       "name": "Burn With Me",
-      "genre": "Pop-Rock / Dance-Rock",
-      "byArtist": { "@type": "MusicGroup", "name": "Rían (Nocturne's Wake)" }
+      "genre": "Pop-Rock / Dance-Rock"
     },
     {
       "@type": "MusicRecording",
       "name": "Come Back Loud",
-      "genre": "Grunge / Alternative Rock",
-      "byArtist": { "@type": "MusicGroup", "name": "Cal (Nocturne's Wake)" }
+      "genre": "Grunge / Alternative Rock"
     },
     {
       "@type": "MusicRecording",
       "name": "White Kiss",
-      "genre": "Gothic Post-Punk / Darkwave",
-      "byArtist": { "@type": "MusicGroup", "name": "Dorian (Nocturne's Wake)" }
+      "genre": "Gothic Post-Punk / Darkwave"
     },
     {
       "@type": "MusicRecording",
       "name": "Electric Poison",
-      "genre": "Dark Groove Rock / Darkwave",
-      "byArtist": { "@type": "MusicGroup", "name": "Dorian (Nocturne's Wake)" }
+      "genre": "Dark Groove Rock / Darkwave"
     },
     {
       "@type": "MusicRecording",
       "name": "King of the Quiet",
-      "genre": "Heavy Groove Metal",
-      "byArtist": { "@type": "MusicGroup", "name": "Marcus (Nocturne's Wake)" }
+      "genre": "Heavy Groove Metal"
     },
     {
       "@type": "MusicRecording",
       "name": "Electric Saint",
-      "genre": "Art-Rock",
-      "byArtist": { "@type": "MusicGroup", "name": "Nocturne's Wake" }
+      "genre": "Art-Rock"
     },
     {
       "@type": "MusicRecording",
       "name": "The Man I Almost Was",
-      "genre": "Art-Rock",
-      "byArtist": { "@type": "MusicGroup", "name": "Nocturne's Wake" }
+      "genre": "Art-Rock"
     }
   ],
   "sameAs": [
@@ -146,7 +139,6 @@ body.theme-rian {
     --textura-fondo:url('rian pop rock night stadium lights.png');
 }
 
-/* Ajuste técnico: Título dorado exclusivo para celulares */
 .titulo-movil {
     text-align: center;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -163,9 +155,7 @@ body.theme-rian {
 }
 
 @media (min-width: 769px) {
-    .titulo-movil {
-        display: none !important;
-    }
+    .titulo-movil { display: none !important; }
 }
 
 /* FONDO */
@@ -289,7 +279,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 }
 .close-btn:hover { background:var(--color-acento); color:#000; }
 
-/* PERSONAJES */
+/* PERSONAJES Y PESTAÑAS DE LORE */
 .member-overlay-content { max-width:700px; margin:auto; text-align:center; }
 .tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-bottom:28px; }
 .tabs button {
@@ -309,12 +299,13 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .member-bio { text-align:left; line-height:1.85; color:var(--color-texto); font-size:.95rem; }
 .member-bio p { margin-bottom:14px; }
 .member-bio blockquote { margin-top:20px; }
+
 .member-accent-dorian { color:#00ffff; }
 .member-accent-cal    { color:#9c4a1a; }
 .member-accent-marcus { color:#7a7a7a; }
 .member-accent-rian   { color:#bd00ff; }
 
-/* REPRODUCTORES */
+/* REPRODUCTORES & DISCOGRAFÍA */
 .player {
     max-width:640px; margin:0 auto 18px; padding:14px; text-align:left;
     background:rgba(0,0,0,.55); border:1px solid var(--color-acento);
@@ -330,6 +321,27 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .pl-btn:hover { background:var(--color-acento); color:#000; }
 .player.on .pl-btn { display:none; }
 .player iframe { display:block; width:100%; border:0; border-radius:12px; }
+
+.disco-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--color-acento);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.disco-card h4 {
+    color: var(--color-acento);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+.disco-card .disco-year {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 12px;
+    display: block;
+}
 
 /* BITÁCORA */
 .bitacora {
@@ -349,10 +361,6 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .overlay-content .entrada p { font-family:'Courier New', Courier, monospace; font-size:1rem; line-height:34px; margin:0; }
 .bitacora .mantra-line { font-family:'Courier New', Courier, monospace; margin:26px 0 0; }
 .bit-actions { text-align:center; }
-.overlay.active .entrada { animation:pagina .6s ease both; }
-.overlay.active .entrada:nth-of-type(2) { animation-delay:.15s; }
-.overlay.active .entrada:nth-of-type(3) { animation-delay:.3s; }
-@keyframes pagina { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 
 /* PLATAFORMAS */
 .platform-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
@@ -409,7 +417,6 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     .bit-head { flex-direction:column; text-align:center; }
 }
 @media (min-width:901px) { .top-socials, .bottom-members { display:none; } }
-@media (prefers-reduced-motion:reduce) { * { transition:none !important; animation:none !important; } }
 </style>
 </head>
 <body>
@@ -435,7 +442,8 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <a href="https://www.tiktok.com/@nocturneswakeofficial" class="nav-button" target="_blank" rel="me">TIKTOK</a>
     <a href="https://www.youtube.com/@nocturneswake" class="nav-button" target="_blank" rel="me">YOUTUBE</a>
     <a href="https://x.com/NocturnesWake" class="nav-button" target="_blank" rel="me">X / TWITTER</a>
-    <a href="https://nocturneswake.fandom.com/es/wiki/Wiki_Nocturne%27s_Wake" class="nav-button btn-info" target="_blank">WIKI FANDOM</a>
+    <button onclick="openOverlay('discografiaOverlay')" class="nav-button btn-info">DISCOGRAFÍA</button>
+    <button onclick="openOverlay('loreOverlay')" class="nav-button btn-info">UNIVERSO & LORE</button>
     <button onclick="openOverlay('infoOverlay')" class="nav-button btn-info">HISTORIA / INFO</button>
     <button onclick="openOverlay('libroOverlay')" class="nav-button btn-info">EL LIBRO</button>
     <button onclick="openNewsletter()" class="nav-button btn-info">NEWSLETTER</button>
@@ -444,19 +452,19 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 <!-- DESKTOP: NAV IZQUIERDO — MIEMBROS -->
 <nav class="members-nav">
     <button class="member-button btn-dorian" onclick="openMember('dorian')">
-        <img src="dorian-neon-shadows-darkwave.png" class="avatar" alt="Avatar de Dorian, la sombra darkwave y post-punk de Nocturne's Wake en neón cian" width="36" height="36">
+        <img src="dorian-neon-shadows-darkwave.png" class="avatar" alt="Dorian" width="36" height="36">
         <div class="member-label">DORIAN<span class="member-role">Dark · Electro</span></div>
     </button>
     <button class="member-button btn-cal" onclick="openMember('cal')">
-        <img src="cal-grunge-garage-texture-alt-rock.png" class="avatar" alt="Avatar de Cal, la resiliencia grunge y rock alternativo de Nocturne's Wake en garaje oxidado" width="36" height="36">
+        <img src="cal-grunge-garage-texture-alt-rock.png" class="avatar" alt="Cal" width="36" height="36">
         <div class="member-label">CAL<span class="member-role">Grunge · Alt</span></div>
     </button>
     <button class="member-button btn-marcus" onclick="openMember('marcus')">
-        <img src="marcus-heavy-metal-iron-strength.png" class="avatar" alt="Avatar de Marcus, la fuerza heavy metal groove de Nocturne's Wake en acero industrial" width="36" height="36">
+        <img src="marcus-heavy-metal-iron-strength.png" class="avatar" alt="Marcus" width="36" height="36">
         <div class="member-label">MARCUS<span class="member-role">Metal · Groove</span></div>
     </button>
     <button class="member-button btn-rian" onclick="openMember('rian')">
-        <img src="rian-pop-rock-night-stadium-lights.png" class="avatar" alt="Avatar de Rián, la conexión pop-rock alternativa de Nocturne's Wake bajo luces de estadio nocturno" width="36" height="36">
+        <img src="rian-pop-rock-night-stadium-lights.png" class="avatar" alt="Rián" width="36" height="36">
         <div class="member-label">RÍAN<span class="member-role">Pop · Rock</span></div>
     </button>
 </nav>
@@ -465,10 +473,9 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 <div class="top-socials">
     <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" rel="me">SPOTIFY</a>
     <a href="https://www.instagram.com/nocturneswake" target="_blank" rel="me">IG</a>
-    <a href="https://www.tiktok.com/@nocturneswakeofficial" target="_blank" rel="me">TIKTOK</a>
     <a href="https://www.youtube.com/@nocturneswake" target="_blank" rel="me">YT</a>
-    <a href="https://x.com/NocturnesWake" target="_blank" rel="me">X</a>
-    <a href="https://nocturneswake.fandom.com/es/wiki/Wiki_Nocturne%27s_Wake" target="_blank" class="btn-info-mob">WIKI</a>
+    <button onclick="openOverlay('discografiaOverlay')" class="btn-info-mob">DISCOS</button>
+    <button onclick="openOverlay('loreOverlay')" class="btn-info-mob">LORE</button>
     <button onclick="openOverlay('infoOverlay')" class="btn-info-mob">INFO</button>
     <button onclick="openOverlay('libroOverlay')" class="btn-info-mob">LIBRO</button>
     <button onclick="openNewsletter()" class="btn-info-mob">NEWS</button>
@@ -476,18 +483,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 
 <!-- MOBILE: BOTTOM BAR -->
 <div class="bottom-members">
-    <button class="bm-dorian" onclick="openMember('dorian')">
-        <img src="dorian-neon-shadows-darkwave.png" class="bm-avatar" alt="Avatar de Dorian, sombra darkwave en neón cian" width="28" height="28">DORIAN
-    </button>
-    <button class="bm-cal" onclick="openMember('cal')">
-        <img src="cal-grunge-garage-texture-alt-rock.png" class="bm-avatar" alt="Avatar de Cal, grunge alternativo en garaje oxidado" width="28" height="28">CAL
-    </button>
-    <button class="bm-marcus" onclick="openMember('marcus')">
-        <img src="marcus-heavy-metal-iron-strength.png" class="bm-avatar" alt="Avatar de Marcus, heavy metal groove de acero industrial" width="28" height="28">MARCUS
-    </button>
-    <button class="bm-rian" onclick="openMember('rian')">
-        <img src="rian-pop-rock-night-stadium-lights.png" class="bm-avatar" alt="Avatar de Rián, pop-rock nocturno de estadio en púrpura eléctrico" width="28" height="28">RÍAN
-    </button>
+    <button class="bm-dorian" onclick="openMember('dorian')"><img src="dorian-neon-shadows-darkwave.png" class="bm-avatar" width="28" height="28">DORIAN</button>
+    <button class="bm-cal" onclick="openMember('cal')"><img src="cal-grunge-garage-texture-alt-rock.png" class="bm-avatar" width="28" height="28">CAL</button>
+    <button class="bm-marcus" onclick="openMember('marcus')"><img src="marcus-heavy-metal-iron-strength.png" class="bm-avatar" width="28" height="28">MARCUS</button>
+    <button class="bm-rian" onclick="openMember('rian')"><img src="rian-pop-rock-night-stadium-lights.png" class="bm-avatar" width="28" height="28">RÍAN</button>
 </div>
 
 <!-- MAIN -->
@@ -513,6 +512,81 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <script type="text/javascript" src="https://contador.websiteout.com/js/2/0/750/0"></script>
 </div>
 
+<!-- OVERLAY: DISCOGRAFÍA COMPLETA -->
+<div class="overlay" id="discografiaOverlay" role="dialog" aria-modal="true" aria-label="Discografía">
+<div class="overlay-content">
+    <h2>Catálogo Discográfico</h2>
+    <p>Explora la producción musical oficial de Nocturne's Wake.</p>
+    
+    <div class="disco-card">
+        <h4>WE DON'T BREAK (ÁLBUM DEBUT)</h4>
+        <span class="disco-year">2026 · 15 CANCIONES</span>
+        <p>El trabajo conceptual fundacional que conecta la tragedia de 2001 con el despertar sonoro en 2026. Incluye temas emblemáticos como <em>Burn with me</em>, <em>Come back loud</em>, <em>White Kiss</em> y <em>King of the Quiet</em>.</p>
+        <a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" class="cta">ESCUCHAR ÁLBUM COMPLETO</a>
+    </div>
+
+    <div class="disco-card">
+        <h4>ELECTRIC SAINTS (SEGUNDO ÁLBUM)</h4>
+        <span class="disco-year">2026 · 14 CANCIONES</span>
+        <p>La expansión sonora y lírica nacida de las profundidades de El Excedente. Un viaje de intensidades gothic darkwave, grunge alternativo y explosiones de heavy groove metal.</p>
+        <a href="https://open.spotify.com/search/Electric%20Saints%20Nocturne's%20Wake" target="_blank" class="cta">BUSCAR EN SPOTIFY</a>
+    </div>
+
+    <h3>SENCILLOS DESTACADOS</h3>
+    <div class="player" data-title="Electric Saint"></div>
+    <div class="player" data-title="The Man I Almost Was"></div>
+
+    <button class="close-btn" onclick="closeOverlay('discografiaOverlay')">CERRAR</button>
+</div>
+</div>
+
+<!-- OVERLAY: UNIVERSO & LORE COMPLETO -->
+<div class="overlay" id="loreOverlay" role="dialog" aria-modal="true" aria-label="Universo y Lore">
+<div class="member-overlay-content">
+    <h2>Universo Transmedia</h2>
+    <div class="tabs" role="tablist">
+        <button role="tab" data-l="excedente" onclick="showLore('excedente')" class="on">EL EXCEDENTE</button>
+        <button role="tab" data-l="bar" onclick="showLore('bar')">EL BAR LA CANCIÓN</button>
+        <button role="tab" data-l="segundas" onclick="showLore('segundas')">SEGUNDAS VIDAS</button>
+        <button role="tab" data-l="navegante" onclick="showLore('navegante')">EL NAVEGANTE</button>
+    </div>
+
+    <!-- PESTAÑA 1: EL EXCEDENTE -->
+    <article class="panel-lore" data-l="excedente">
+        <div class="member-bio">
+            <p><strong>El Excedente</strong> es la masa semántica y emocional compuesta por todas las canciones, palabras e ideas no pronunciadas a lo largo de décadas de silencio.</p>
+            <p>No es un lugar físico, sino una dimensión de memoria acumulada. De allí emergen las entidades de Rían, Cal, Dorian y Marcus: personificaciones de diferentes estados emocionales y musicales nacidos para darle forma al sonido de Nocturne's Wake.</p>
+        </div>
+    </article>
+
+    <!-- PESTAÑA 2: EL BAR LA CANCIÓN -->
+    <article class="panel-lore" data-l="bar" hidden>
+        <div class="member-bio">
+            <p><strong>El Bar La Canción</strong> es el portal itinerante. Una intersección entre la realidad tangible y la dimensión semántica de El Excedente.</p>
+            <p>Fue en este espacio donde, tras un sueño hiperrealista en 2026, el creador se reenganchó con las cuatro entidades que darían vida al proyecto, permitiendo rescatar las letras y composiciones guardadas durante 25 años.</p>
+        </div>
+    </article>
+
+    <!-- PESTAÑA 3: EL PAÍS DE LAS SEGUNDAS VIDAS -->
+    <article class="panel-lore" data-l="segundas" hidden>
+        <div class="member-bio">
+            <p><strong>El País de las Segundas Vidas</strong> representa la columna vertebral filosófica de Nocturne's Wake. Nace de la premisa fundamental de que ninguna herida, silencio o fractura del pasado tiene el poder definitivo de apagar la voz artística.</p>
+            <blockquote>"La tecnología no reemplaza el dolor humano; le otorga una nueva oportunidad de cantar."</blockquote>
+        </div>
+    </article>
+
+    <!-- PESTAÑA 4: EL NAVEGANTE / CREADOR -->
+    <article class="panel-lore" data-l="navegante" hidden>
+        <div class="member-bio">
+            <p><strong>Mario Edgardo Labitola Vásquez (El Navegante)</strong> es el autor, compositor y arquitecto detrás de Nocturne's Wake.</p>
+            <p>Tras sobrevivir a una tragedia en Montevideo en el año 2001 que afectó su capacidad de cantar tradicionalmente, guardó sus composiciones durante 25 años. En 2026, asumió la dirección artística integral utilizando la tecnología digital como prótesis expresiva para dar vida a la banda virtual.</p>
+        </div>
+    </article>
+
+    <button class="close-btn" onclick="closeOverlay('loreOverlay')">CERRAR</button>
+</div>
+</div>
+
 <!-- OVERLAY: HISTORIA / INFO -->
 <div class="overlay" id="infoOverlay" role="dialog" aria-modal="true" aria-label="Historia e información">
 <div class="overlay-content">
@@ -529,29 +603,13 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <h3>El Concepto</h3>
     <blockquote>"Un pincel en las manos correctas es una herramienta en las manos de un artista; un pincel en las manos equivocadas solamente es un pincel."</blockquote>
     <p>Nocturne's Wake es un proyecto de simbiosis humano-digital. No es una banda generada por inteligencia artificial: es una obra dirigida por un autor, donde la tecnología funciona como instrumento y no como origen.</p>
-    <p>Así como el sintetizador redefinió la música en los años 70, aquí la tecnología cumple un nuevo rol: ejecutar, expandir y potenciar una visión artística profundamente humana. La dirección emocional, la arquitectura lírica y la construcción narrativa son 100% autorales.</p>
-
-    <hr class="overlay-divider">
-    <h3>El Manifiesto</h3>
-    <blockquote>"El arte no es exclusividad del humano, ni la perfección es exclusividad del código. Nocturne's Wake es la colisión de ambos. No somos un algoritmo intentando sentir; somos la emoción humana amplificada por la máquina. Es la simbiosis entre el alma herida y el cálculo perfecto."</blockquote>
     
-    <hr class="overlay-divider">
-    <h3>El Universo</h3>
-    <p>Nocturne's Wake está compuesto por cuatro identidades que representan distintas facetas de la experiencia humana:</p>
-    <p>
-        <span class="member-accent-dorian">Dorian — La sombra (Darkwave / Post-Punk).</span><br>
-        <span class="member-accent-cal">Cal — La resiliencia (Grunge / Alt Rock).</span><br>
-        <span class="member-accent-marcus">Marcus — La fuerza (Heavy Groove Metal).</span><br>
-        <span class="member-accent-rian">Rían — La conexión (Pop-Rock / Alternative).</span>
-    </p>
-
     <p class="mantra-line">WE DON'T BREAK.</p>
     
     <hr class="overlay-divider">
     <h3>Plataformas</h3>
     <div class="platform-grid">
         <div class="platform-item">🎵 <strong>Spotify</strong><br><a href="https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw" target="_blank" rel="me">Escuchar discografía</a></div>
-        <div class="platform-item">📚 <strong>Wiki Fandom Oficial</strong><br><a href="https://nocturneswake.fandom.com/es/wiki/Wiki_Nocturne%27s_Wake" target="_blank" rel="me">Explorar el Lore Completo</a></div>
         <div class="platform-item">📸 <strong>Instagram</strong><br><a href="https://www.instagram.com/nocturneswake" target="_blank" rel="me">@nocturneswake</a></div>
         <div class="platform-item">🎬 <strong>TikTok</strong><br><a href="https://www.tiktok.com/@nocturneswakeofficial" target="_blank" rel="me">@nocturneswakeofficial</a></div>
         <div class="platform-item">▶️ <strong>YouTube</strong><br><a href="https://www.youtube.com/@nocturneswake" target="_blank" rel="me">Nocturne's Wake</a></div>
@@ -572,14 +630,14 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 </div>
 </div>
 
-<!-- OVERLAY: EL LIBRO — BITÁCORA DE CUADERNOS -->
+<!-- OVERLAY: EL LIBRO -->
 <div class="overlay" id="libroOverlay" role="dialog" aria-modal="true" aria-label="El libro We Don't Break">
 <div class="overlay-content" style="text-align:center;">
     <h2>WE DON'T BREAK</h2>
     <h3 style="margin-top:0;">El origen de Nocturne's Wake</h3>
-    <section class="bitacora" aria-label="Bitácora de cuadernos">
+    <section class="bitacora">
         <div class="bit-head">
-            <img class="bit-cover" src="images/we-dont-break-autobiography-book-cover.png" alt="Portada del libro autobiográfico We Don't Break, el origen de Nocturne's Wake: bitácora de cuadernos antiguos, historia real y rock nocturno" width="130" height="195" loading="lazy">
+            <img class="bit-cover" src="images/we-dont-break-autobiography-book-cover.png" alt="Portada del libro We Don't Break" width="130" height="195" loading="lazy">
             <div class="bit-meta">Bitácora de cuadernos<br>We Don't Break<br>El origen de Nocturne's Wake</div>
         </div>
         <article class="entrada">
@@ -605,7 +663,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 </div>
 
 <!-- OVERLAY: PERSONAJES -->
-<div class="overlay member" id="memberOverlay" role="dialog" aria-modal="true" aria-label="Las cuatro identidades de Nocturne's Wake">
+<div class="overlay member" id="memberOverlay" role="dialog" aria-modal="true" aria-label="Las cuatro identidades">
 <div class="member-overlay-content">
     <div class="tabs" role="tablist">
         <button role="tab" data-m="dorian" onclick="showMember('dorian')">DORIAN</button>
@@ -619,11 +677,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <img src="dorian-neon-shadows-darkwave.png" class="member-photo" alt="Dorian" width="220" height="220">
         <div class="member-name">DORIAN</div>
         <div class="member-genre">Dark Electro · Post-Punk · Darkwave</div>
-        <div class="player" data-title="Electric Poison" data-spotify="" data-youtube=""></div>
-        <div class="player" data-title="White Kiss" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Electric Poison"></div>
+        <div class="player" data-title="White Kiss"></div>
         <div class="member-bio">
             <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculated, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
-            <p>Construido sobre una arquitectura de sintetizadores oscuros, guitarras atmosféricas y una presencia escénica que oscila entre lo hipnótico y lo perturbador, Dorian representa la melancolía que escribe en soledad desde El Excedente.</p>
             <blockquote>"No estoy aquí para que me entiendas. Estoy aquí para que no puedas ignorarme."</blockquote>
         </div>
     </article>
@@ -633,11 +690,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <img src="cal-grunge-garage-texture-alt-rock.png" class="member-photo" alt="Cal" width="220" height="220">
         <div class="member-name">CAL</div>
         <div class="member-genre">Grunge · Alternative Rock</div>
-        <div class="player" data-title="Every Night Again" data-spotify="" data-youtube=""></div>
-        <div class="player" data-title="Come back loud" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Every Night Again"></div>
+        <div class="player" data-title="Come back loud"></div>
         <div class="member-bio">
-            <p>Cal es la resiliencia. No el triunfo fácil, sino el que viene después de haber perdido algo. Es el ancla emocional y el único integrante que conserva la memoria previa al cruce en el Bar La Canción.</p>
-            <p>Heredero directo del grunge de los 90, Cal convierte la incomodidad en arte y la fractura en canción.</p>
+            <p>Cal es la resiliencia. No el triunfo fácil, sino el que viene después de haber perdido algo. Es el ancla emocional del proyecto.</p>
             <blockquote>"No busco tu aprobación. Busco tu reconocimiento."</blockquote>
         </div>
     </article>
@@ -647,10 +703,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <img src="marcus-heavy-metal-iron-strength.png" class="member-photo" alt="Marcus" width="220" height="220">
         <div class="member-name">MARCUS</div>
         <div class="member-genre">Heavy Metal · Groove Metal</div>
-        <div class="player" data-title="King of the Quiet" data-spotify="" data-youtube=""></div>
-        <div class="player" data-title="Still Here" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="King of the Quiet"></div>
+        <div class="player" data-title="Still Here"></div>
         <div class="member-bio">
-            <p>Marcus es la fuerza. Representa la resistencia pura, la rabia contra el destino y la sanación a través de la potencia sonora de la batería y el heavy metal groove.</p>
+            <p>Marcus es la fuerza. Representa la resistencia pura y la sanación a través de la potencia sonora.</p>
             <blockquote>"La fuerza no es no sentir. Es seguir de pie mientras sientes todo."</blockquote>
         </div>
     </article>
@@ -660,10 +716,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <img src="rian-pop-rock-night-stadium-lights.png" class="member-photo" alt="Rián" width="220" height="220">
         <div class="member-name">RÍAN</div>
         <div class="member-genre">Pop-Rock · Alternative</div>
-        <div class="player" data-title="Burn With Me" data-spotify="" data-youtube=""></div>
-        <div class="player" data-title="Electric Skin" data-spotify="" data-youtube=""></div>
+        <div class="player" data-title="Burn With Me"></div>
+        <div class="player" data-title="Electric Skin"></div>
         <div class="member-bio">
-            <p>RÍAN es la conexión. Representa la juventud recobrada, el carisma, la chispa vital y el puente directo entre la masa semántica y quienes escuchan.</p>
+            <p>RÍAN es la conexión. Representa la juventud recobrada, el carisma y la chispa vital.</p>
             <blockquote>"La conexión no es debilidad. Es la razón por la que todo esto existe."</blockquote>
         </div>
     </article>
@@ -689,6 +745,16 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+/* ---------- CONTROL PESTAÑAS LORE ---------- */
+function showLore(key) {
+    document.querySelectorAll('.panel-lore').forEach(function(p) {
+        p.hidden = p.dataset.l !== key;
+    });
+    document.querySelectorAll('#loreOverlay .tabs button').forEach(function(btn) {
+        btn.classList.toggle('on', btn.dataset.l === key);
+    });
+}
+
 /* ---------- TEMAS DINÁMICOS ---------- */
 const THEMES = ['dorian', 'cal', 'marcus', 'rian'];
 const HERO_BG = document.querySelectorAll('.hero-bg i');
@@ -710,10 +776,6 @@ function setTheme(t) {
     layerIdx = 1 - layerIdx;
 }
 HERO_BG[0].style.backgroundImage = readTexture();
-['dorian-neon-shadows-darkwave.png',
- 'cal-grunge-garage-texture-alt-rock.png',
- 'marcus-heavy-metal-iron-strength.png',
- 'rian-pop-rock-night-stadium-lights.png'].forEach(function(f) { new Image().src = f; });
 
 function openMember(m) {
     openOverlay('memberOverlay');
@@ -723,7 +785,7 @@ function showMember(m) {
     if (m !== currentMember) stopPlayers();
     currentMember = m;
     document.querySelectorAll('.panel').forEach(function(p) { p.hidden = p.dataset.m !== m; });
-    document.querySelectorAll('.tabs button').forEach(function(t) {
+    document.querySelectorAll('#memberOverlay .tabs button').forEach(function(t) {
         const on = t.dataset.m === m;
         t.classList.toggle('on', on);
         t.setAttribute('aria-selected', on);
@@ -741,7 +803,7 @@ document.querySelectorAll('.player').forEach(function(p) {
         action = '<button type="button" class="pl-btn">▶ Reproducir sin salir del sitio</button>';
     } else {
         const q = encodeURIComponent(title + ' Nocturne\'s Wake');
-        action = '<a class="pl-btn" href="https://open.spotify.com/search/' + q + '" target="_blank" rel="noopener">▶ Escuchar en Spotify</a>';
+        action = '<a class="pl-btn" href="https://open.spotify.com/search/' + q + '" target="_blank" rel="noopener">▶ Escuchar ' + title + ' en Spotify</a>';
     }
     p.innerHTML = '<span class="pl-title">♪ ' + title + '</span>' + action;
     const btn = p.querySelector('button');
