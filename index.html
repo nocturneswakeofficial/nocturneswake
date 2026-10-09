@@ -15,7 +15,6 @@
 <link rel="icon" href="favicon.png" type="image/png">
 
 <!-- METADATOS GEO / SEO ESTRUCTURADOS PARA IA (SCHEMA.ORG) -->
-<!-- METADATOS GEO / SEO ESTRUCTURADOS PARA IA (SCHEMA.ORG) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,51 +87,152 @@
     }
   ],
   "track": [
-    {
-      "@type": "MusicRecording",
-      "name": "Burn With Me",
-      "genre": "Pop-Rock / Dance-Rock"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "Come Back Loud",
-      "genre": "Grunge / Alternative Rock"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "White Kiss",
-      "genre": "Gothic Post-Punk / Darkwave"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "Electric Poison",
-      "genre": "Dark Groove Rock / Darkwave"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "King of the Quiet",
-      "genre": "Heavy Groove Metal"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "Electric Saint",
-      "genre": "Art-Rock"
-    },
-    {
-      "@type": "MusicRecording",
-      "name": "The Man I Almost Was",
-      "genre": "Art-Rock"
-    }
-  ],
-  "sameAs": [
-    "https://open.spotify.com/album/5gIKXA6G81ALZ2zp96e0kw",
-    "https://www.instagram.com/nocturneswake",
-    "https://www.tiktok.com/@nocturneswakeofficial",
-    "https://www.youtube.com/@nocturneswake",
-    "https://x.com/NocturnesWake",
-    "https://nocturneswake.fandom.com/es/wiki/Wiki_Nocturne%27s_Wake",
-    "https://audiomack.com/nocturneswake"
-  ]
+{
+"@type": "MusicRecording",
+"name": "Burn with Me",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "Set Me on Fire",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "King of the Quiet",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Electric Skin",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "Come Back Loud",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Static in My Head",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Come Back Stage",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "Electric Poison",
+"genre": "Post-Punk / Darkwave"
+},
+{
+"@type": "MusicRecording",
+"name": "You Are Not Alone",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "We Don't Break",
+"genre": "Rock / Ensamble (Himno)"
+},
+{
+"@type": "MusicRecording",
+"name": "Every Night Again",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Hollow Echoes",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "White Kiss",
+"genre": "Post-Punk / Darkwave"
+},
+{
+"@type": "MusicRecording",
+"name": "Still Here",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Four Worlds One Sound (Cruce en el Bar)",
+"genre": "Metal-Rock / Ensamble"
+},
+{
+"@type": "MusicRecording",
+"name": "The Man I Almost Was",
+"genre": "Post-Punk / Darkwave"
+},
+{
+"@type": "MusicRecording",
+"name": "Whiskey on Your Lips",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Last Regret",
+"genre": "Post-Punk / Darkwave"
+},
+{
+"@type": "MusicRecording",
+"name": "Electric Saint",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Scar on Scar",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Under the Same Skin",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Until You Smile Again",
+"genre": "Grunge / Rock Alternativo 90s"
+},
+{
+"@type": "MusicRecording",
+"name": "Iron Sleep",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Rose from the Dark",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Wired Eyes",
+"genre": "Heavy Metal / Groove Metal"
+},
+{
+"@type": "MusicRecording",
+"name": "Windows Down",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "We Don't Sleep Tonight",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "No Plans Tonight",
+"genre": "Pop-Rock / Hard-Rock 2000s"
+},
+{
+"@type": "MusicRecording",
+"name": "The Floor Remembers",
+"genre": "Post-Punk / Darkwave"
+}
+]
 }
 </script>
 
@@ -204,58 +304,72 @@ body.theme-rian {
     background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
 }
 
+/* ========== ESTILO NEÓN: TODOS LOS BOTONES ==========
+   Píldora con borde luminoso + brillo exterior e interior.
+   Toma el color de acento del tema; cada identidad puede fijar el suyo con --neon. */
+.lang-switch button, .audio-btn, .nav-button, .member-button, .cta, .close-btn, .pl-btn,
+.tabs button, .top-socials a, .top-socials button, .bottom-members button {
+    --n: var(--neon, var(--color-acento));
+    background:rgba(0,0,0,.55);
+    color:var(--n);
+    border:2px solid var(--n);
+    border-radius:999px;
+    font-weight:bold;
+    cursor:pointer;
+    text-shadow:0 0 8px color-mix(in srgb, var(--n) 85%, transparent);
+    box-shadow:
+        0 0 5px color-mix(in srgb, var(--n) 90%, transparent),
+        0 0 16px color-mix(in srgb, var(--n) 55%, transparent),
+        inset 0 0 12px color-mix(in srgb, var(--n) 40%, transparent);
+    transition:box-shadow .25s ease, text-shadow .25s ease, background .25s ease, color .25s ease, transform .25s ease;
+}
+.lang-switch button:hover, .audio-btn:hover, .nav-button:hover, .member-button:hover, .cta:hover, .close-btn:hover, .pl-btn:hover,
+.tabs button:hover, .tabs button.on, .top-socials a:hover, .top-socials button:hover, .bottom-members button:hover {
+    background:color-mix(in srgb, var(--n) 20%, rgba(0,0,0,.55));
+    color:#fff;
+    text-shadow:0 0 6px #fff, 0 0 14px var(--n);
+    box-shadow:
+        0 0 8px var(--n),
+        0 0 28px var(--n),
+        0 0 56px color-mix(in srgb, var(--n) 50%, transparent),
+        inset 0 0 18px color-mix(in srgb, var(--n) 65%, transparent);
+    transform:translateY(-2px);
+}
+.btn-dorian, .bm-dorian { --neon:#00ffff; }
+.btn-cal,    .bm-cal    { --neon:#9c4a1a; }
+.btn-marcus, .bm-marcus { --neon:#7a7a7a; }
+.btn-rian,   .bm-rian   { --neon:#bd00ff; }
+
 /* IDIOMA / AUDIO */
 .lang-switch { position:fixed; top:20px; left:20px; z-index:20; }
-.lang-switch button, .audio-btn {
-    background:rgba(0,0,0,.7);
-    border:1px solid var(--color-acento);
-    color:var(--color-acento);
-    cursor:pointer; font-weight:bold;
-    transition:background .2s, color .2s;
-}
-.lang-switch button { padding:6px 10px; margin-right:5px; font-size:12px; }
-.audio-btn { position:fixed; top:20px; right:20px; z-index:20; padding:6px 14px; font-size:11px; letter-spacing:1px; }
-.lang-switch button:hover, .audio-btn:hover { background:var(--color-acento); color:#000; }
+.lang-switch button { padding:6px 14px; margin-right:6px; font-size:12px; }
+.audio-btn { position:fixed; top:20px; right:20px; z-index:20; padding:7px 16px; font-size:11px; letter-spacing:1px; }
 
 /* NAV DERECHO */
 .nav-container {
     position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:10;
-    display:flex; flex-direction:column; gap:8px; padding-right:20px;
+    display:flex; flex-direction:column; gap:10px; padding-right:20px;
 }
 .nav-button {
     display:block; min-width:160px; padding:12px 18px;
-    background:rgba(0,0,0,.82); color:#fff;
-    font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; text-align:center; text-decoration:none;
-    border:1px solid rgba(255,255,255,.4); cursor:pointer;
-    transition:background .2s, color .2s;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase; text-align:center; text-decoration:none;
 }
-.nav-button:hover { background:#fff; color:#000; }
-.btn-info { border-color:var(--color-acento); color:var(--color-acento); }
-.btn-info:hover { background:var(--color-acento); color:#000; }
 
 /* NAV IZQUIERDO — MIEMBROS */
 .members-nav {
     position:fixed; left:0; top:50%; transform:translateY(-50%); z-index:10;
-    display:flex; flex-direction:column; gap:8px; padding-left:20px;
+    display:flex; flex-direction:column; gap:10px; padding-left:20px;
 }
 .member-button {
-    display:flex; align-items:center; gap:10px; min-width:150px; padding:10px 14px;
-    background:rgba(0,0,0,.82); color:#fff;
-    font-size:11px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;
-    border:1px solid rgba(255,255,255,.25); cursor:pointer;
-    transition:background .2s, border-color .2s;
+    display:flex; align-items:center; gap:10px; min-width:160px; padding:7px 20px 7px 8px;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
 }
-.member-button:hover { background:rgba(255,255,255,.1); border-color:#fff; }
 .member-button .avatar {
     width:36px; height:36px; border-radius:50%; flex-shrink:0;
-    object-fit:cover; object-position:center 15%; border:1px solid rgba(255,255,255,.4);
+    object-fit:cover; object-position:center 15%; border:2px solid var(--n);
 }
 .member-button .member-label { line-height:1.3; text-align:left; }
-.member-button .member-role { display:block; font-size:9px; color:#aaa; font-weight:normal; letter-spacing:.5px; }
-.btn-dorian { border-left:3px solid #00ffff; } .btn-dorian:hover { border-color:#00ffff; }
-.btn-cal    { border-left:3px solid #9c4a1a; } .btn-cal:hover    { border-color:#9c4a1a; }
-.btn-marcus { border-left:3px solid #7a7a7a; } .btn-marcus:hover { border-color:#7a7a7a; }
-.btn-rian   { border-left:3px solid #bd00ff; } .btn-rian:hover   { border-color:#bd00ff; }
+.member-button .member-role { display:block; font-size:9px; color:#aaa; font-weight:normal; letter-spacing:.5px; text-shadow:none; }
 
 /* MAIN */
 .main-content {
@@ -272,15 +386,12 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 }
 .bio-box p { margin-bottom:4px; }
 .bio-box .brush-quote { margin-top:6px; font-size:.85rem; }
-.bio-box .cta { margin-top:10px; padding:8px 20px; }
+.bio-box .cta { margin-top:10px; padding:8px 24px; }
 .brush-quote { display:block; margin-top:15px; color:var(--color-acento); font-style:italic; }
 .cta {
-    display:inline-block; margin-top:20px; padding:10px 25px;
-    border:1px solid var(--color-acento); color:var(--color-acento); background:none;
-    font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; cursor:pointer;
-    transition:background .2s, color .2s;
+    display:inline-block; margin-top:20px; padding:10px 28px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none;
 }
-.cta:hover { background:var(--color-acento); color:#000; }
 
 /* OVERLAYS */
 .overlay {
@@ -305,24 +416,17 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .overlay-divider { border:none; border-top:1px solid var(--color-acento); opacity:.35; margin:30px 0; }
 .mantra-line { font-size:1.2rem; letter-spacing:4px; color:var(--color-acento) !important; text-align:center; margin-top:30px; font-weight:bold; }
 .close-btn {
-    display:block; margin:40px auto 0; padding:10px 30px;
-    border:1px solid var(--color-acento); color:var(--color-acento); background:none;
-    font-size:12px; letter-spacing:2px; cursor:pointer;
-    transition:background .2s, color .2s;
+    display:block; margin:40px auto 0; padding:10px 34px;
+    font-size:12px; letter-spacing:2px;
 }
-.close-btn:hover { background:var(--color-acento); color:#000; }
 
 /* PERSONAJES Y PESTAÑAS DE LORE */
 .member-overlay-content { max-width:700px; margin:auto; text-align:center; }
-.tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-bottom:28px; }
+.tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px; }
 .tabs button {
-    flex:1 1 90px; padding:10px 8px; background:rgba(0,0,0,.45); color:var(--color-texto);
-    border:1px solid transparent; border-bottom:2px solid rgba(255,255,255,.2);
-    font-size:11px; font-weight:bold; letter-spacing:2px; cursor:pointer;
-    transition:color .3s, border-color .3s, background .3s;
+    flex:1 1 90px; padding:10px 12px;
+    font-size:11px; letter-spacing:2px;
 }
-.tabs button:hover { border-bottom-color:var(--color-acento); }
-.tabs button.on { color:var(--color-acento); border-bottom-color:var(--color-acento); background:rgba(0,0,0,.7); }
 .member-photo {
     width:220px; height:220px; border-radius:50%; margin-bottom:24px;
     object-fit:cover; object-position:center 15%; border:2px solid var(--color-acento);
@@ -346,12 +450,10 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 .player:last-of-type { margin-bottom:30px; }
 .pl-title { display:block; margin-bottom:10px; color:var(--color-acento); font-size:11px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
 .pl-btn {
-    display:block; width:100%; padding:14px; background:none; color:var(--color-acento);
-    border:1px dashed var(--color-acento); font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase;
-    text-align:center; text-decoration:none; cursor:pointer;
-    transition:background .2s, color .2s;
+    display:block; width:100%; padding:14px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase;
+    text-align:center; text-decoration:none;
 }
-.pl-btn:hover { background:var(--color-acento); color:#000; }
 .player.on .pl-btn { display:none; }
 .player iframe { display:block; width:100%; border:0; border-radius:12px; }
 
@@ -408,37 +510,33 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 /* RESPONSIVE */
 @media (max-width:900px) {
     .nav-container, .members-nav { display:none; }
-    .audio-btn { top:auto; bottom:130px; right:10px; font-size:10px; padding:5px 10px; }
+    .audio-btn { top:auto; bottom:130px; right:10px; font-size:10px; padding:6px 12px; }
     .top-socials {
         display:flex !important; position:fixed; top:0; left:0; right:0; z-index:20;
-        justify-content:center; flex-wrap:wrap; background:rgba(0,0,0,.9);
-        border-bottom:1px solid var(--color-acento);
+        justify-content:center; flex-wrap:wrap; gap:6px; padding:8px;
+        background:rgba(0,0,0,.9); border-bottom:1px solid var(--color-acento);
     }
     .top-socials a, .top-socials button {
-        padding:10px 12px; background:none; color:#fff; border:none; border-right:1px solid rgba(255,255,255,.15);
-        font-size:10px; font-weight:bold; letter-spacing:1px; text-decoration:none; text-transform:uppercase; cursor:pointer;
+        padding:6px 12px; border-width:1.5px;
+        font-size:10px; letter-spacing:1px; text-decoration:none; text-transform:uppercase;
     }
-    .top-socials a:last-child, .top-socials button:last-child { border-right:none; }
-    .top-socials .btn-info-mob { color:var(--color-acento); }
     .bottom-members {
         display:flex !important; position:fixed; bottom:0; left:0; right:0; z-index:20;
-        justify-content:space-around; background:rgba(0,0,0,.92); border-top:1px solid var(--color-acento);
+        justify-content:space-around; gap:6px; padding:6px 8px;
+        background:rgba(0,0,0,.92); border-top:1px solid var(--color-acento);
     }
     .bottom-members button {
-        flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:10px 4px;
-        background:none; color:#fff; border:none; border-right:1px solid rgba(255,255,255,.1);
-        font-size:9px; font-weight:bold; text-transform:uppercase; cursor:pointer;
+        flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:6px 4px;
+        border-radius:18px; border-width:1.5px;
+        font-size:9px; text-transform:uppercase;
     }
-    .bottom-members button:last-child { border-right:none; }
-    .bottom-members .bm-avatar { width:28px; height:28px; border-radius:50%; object-fit:cover; object-position:center 15%; border:1px solid rgba(255,255,255,.4); }
-    .bm-dorian { border-top:2px solid #00ffff; } .bm-cal { border-top:2px solid #9c4a1a; }
-    .bm-marcus { border-top:2px solid #7a7a7a; } .bm-rian { border-top:2px solid #bd00ff; }
-    .main-content { padding:70px 16px 90px; justify-content:center; }
+    .bottom-members .bm-avatar { width:28px; height:28px; border-radius:50%; object-fit:cover; object-position:center 15%; border:1px solid var(--n); }
+    .main-content { padding:110px 16px 110px; justify-content:center; }
     h1 { font-size:1.8rem; letter-spacing:4px; }
     .bio-box { position:static; margin-top:24px; padding:22px 20px; font-size:.9rem; line-height:1.6; }
     .bio-box p { margin-bottom:14px; }
     .bio-box .brush-quote { font-size:.9rem; }
-    .bio-box .cta { padding:10px 25px; }
+    .bio-box .cta { padding:10px 28px; }
     .lang-switch { top:auto; bottom:85px; left:10px; z-index:21; }
     .platform-grid { grid-template-columns:1fr; }
     .micro-hook { font-size:9px; }
@@ -550,7 +648,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
 <div class="overlay-content">
     <h2>Catálogo Discográfico</h2>
     <p>Explora la producción musical oficial de Nocturne's Wake.</p>
-    
+
     <div class="disco-card">
         <h4>WE DON'T BREAK (ÁLBUM DEBUT)</h4>
         <span class="disco-year">2026 · 15 CANCIONES</span>
@@ -616,7 +714,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         </div>
     </article>
 
-        <div style="text-align:center; margin-top:30px;">
+    <div style="text-align:center; margin-top:30px;">
         <a href="https://nocturneswake.fandom.com/es/wiki/Wiki_Nocturne%27s_Wake"
            target="_blank" rel="noopener" class="cta">EXPLORAR LA WIKI</a>
     </div>
@@ -631,19 +729,19 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <h2>¿Qué es Nocturne's Wake?</h2>
     <p>Nocturne's Wake es un proyecto musical, artístico y universo transmedia nacido en Uruguay, creado y dirigido por el autor uruguayo Mario Edgardo Labitola Vázquez.</p>
     <p>Nacido a partir de un trágico suceso en el año 2001 y tras un silencio de un cuarto de siglo, el proyecto combina música, literatura, estética dark cinematic y tecnología digital utilizada como una prótesis existencial para dar voz a composiciones guardadas en cuadernos a lo largo de 25 años.</p>
-    
+
     <hr class="overlay-divider">
     <h3>El Origen y El Lore Central</h3>
     <p>El 17 de mayo de 2001, a los 20 años de edad, Mario sobrevivió a un disparo en Montevideo mientras trabajaba como sereno. Las reconstrucciones anatómicas posteriores resultaron en una alteración de la resonancia fonatoria que le impidió cantar tradicionalmente, truncando sus planes musicales en el under montevideano de los años noventa.</p>
     <p>En 2026, tras acudir a sus viejos cuadernos y atravesar un sueño hiperrealista, descubrió la puerta del <strong>Bar La Canción</strong>: un portal itinerante entre nuestra realidad y la masa de memoria emocional conocida como <strong>El Excedente</strong>. Allí se encontró con las cuatro entidades que articulan el proyecto: <strong>Rían, Cal, Dorian y Marcus</strong>.</p>
-    
+
     <hr class="overlay-divider">
     <h3>El Concepto</h3>
     <blockquote>"Un pincel en las manos correctas es una herramienta en las manos de un artista; un pincel en las manos equivocadas solamente es un pincel."</blockquote>
     <p>Nocturne's Wake es un proyecto de simbiosis humano-digital. No es una banda generada por inteligencia artificial: es una obra dirigida por un autor, donde la tecnología funciona como instrumento y no como origen.</p>
-    
+
     <p class="mantra-line">WE DON'T BREAK.</p>
-    
+
     <hr class="overlay-divider">
     <h3>Plataformas</h3>
     <div class="platform-grid">
@@ -675,7 +773,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
     <h3 style="margin-top:0;">El origen de Nocturne's Wake</h3>
     <section class="bitacora">
         <div class="bit-head">
-            <img class="bit-cover" src="images/we-dont-break-autobiography-book-cover.png" alt="Portada del libro We Don't Break" width="130" height="195" loading="lazy">
+            <img class="bit-cover" src="we-dont-break-autobiography-book-cover.png" alt="Portada del libro We Don't Break" width="130" height="195" loading="lazy">
             <div class="bit-meta">Bitácora de cuadernos<br>We Don't Break<br>El origen de Nocturne's Wake</div>
         </div>
         <article class="entrada">
@@ -693,7 +791,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <p class="mantra-line">WE DON'T BREAK.</p>
         <div class="bit-actions">
             <a href="we-dont-break-el-origen.pdf" target="_blank" class="cta" style="margin-top:20px;">LEER ONLINE</a>
-            <a href="we-dont-break-el-origen.pdf" download class="cta" style="margin-top:20px; margin-left:10px; opacity:.75;">DESCARGAR PDF</a>
+            <a href="we-dont-break-el-origen.pdf" download class="cta" style="margin-top:20px; margin-left:10px;">DESCARGAR PDF</a>
         </div>
     </section>
     <button class="close-btn" onclick="closeOverlay('libroOverlay')">CERRAR</button>
@@ -718,7 +816,7 @@ h1 { font-size:3rem; letter-spacing:8px; margin-bottom:20px; }
         <div class="player" data-title="Electric Poison"></div>
         <div class="player" data-title="White Kiss"></div>
         <div class="member-bio">
-            <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculated, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
+            <p>Dorian es la sombra. El arquetipo de lo que existe entre la luz y la oscuridad: seductor, calculado, cinematográfico. Su música no invita: atrapa. No explica: insinúa.</p>
             <blockquote>"No estoy aquí para que me entiendas. Estoy aquí para que no puedas ignorarme."</blockquote>
         </div>
     </article>
